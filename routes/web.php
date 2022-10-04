@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PlaneController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+/* RUTA PARA TODOS LOS METODOS */
+Route::resource('plane', PlaneController::class);
