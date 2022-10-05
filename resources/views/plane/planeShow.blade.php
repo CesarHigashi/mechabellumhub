@@ -9,7 +9,10 @@
 <body>
     <h1>Detalle del avión</h1>
 
-    <h2>{{ $plane->name}}</h2>
-    <a href="/plane">Regrsar al listado</a>
+    <h2>{{ $plane->name }}</h2>
+    <h2>{{ $plane->country }}</h2>
+    <h2>{{ $plane->category }}</h2>
+    <br>
+    <a href="/plane">Regresar al listado</a>
 </body>
 </html>

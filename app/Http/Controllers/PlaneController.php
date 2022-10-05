@@ -88,7 +88,7 @@ class PlaneController extends Controller
      */
     public function edit(Plane $plane)
     {
-        //
+        return view('plane/planeEdit', compact('plane'));
     }
 
     /**
@@ -100,7 +100,24 @@ class PlaneController extends Controller
      */
     public function update(Request $request, Plane $plane)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:50',
+            'year' => 'required',
+            'country' => 'required',
+            'machine_guns' => 'digits_between:0,2',
+            'cannons' => 'digits_between:0,2',
+            'turrets' => 'digits_between:0,2',
+            'max_height_m' => 'required|digits_between:1,5',
+            'crew' => 'required',
+            'max_speed_kmh' => 'required|digits_between:1,4',
+            'weight_kg' => 'required|digits_between:1,4',
+            'category' => 'required|max:30',
+            'description' => 'required|max:500',
+        ]);
+
+        Plane::where('id',$plane->id)->update($request->except('_token', '_method'));
+
+        return redirect('/plane');
     }
 
     /**
@@ -111,6 +128,7 @@ class PlaneController extends Controller
      */
     public function destroy(Plane $plane)
     {
-        //
+        $plane -> delete();
+        return redirect('/plane');
     }
 }

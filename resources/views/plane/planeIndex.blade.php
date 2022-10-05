@@ -11,14 +11,28 @@
 
     <a href="/plane/create">Ir a formulario</a>
 
-    <table>
+    <table border="1">
         <tr>
             <th>Nombre</th>
+            <th>País</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
         </tr>
         @foreach ($planes as $plane)
             <tr>
                 <td>
-                    <a href="/plane/{{ $plane->name}}">{{ $plane->name }}</a>
+                    <a href="/plane/{{ $plane->id }}">{{ $plane->name }}</a>
+                </td>
+                <td>{{ $plane->country }}</td>
+                <td>
+                    <a href="/plane/{{ $plane->id }}/edit">Editar</a>
+                </td>
+                <td>
+                    <form action="/plane/{{ $plane->id }}" method="POST">
+                        @csrf
+                        @method('delete')
+                        <input type="submit" value="Borrar">
+                    </form>
                 </td>
             </tr>
         @endforeach
