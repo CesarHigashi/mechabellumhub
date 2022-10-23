@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PlaneController;
+use App\Http\Controllers\TankController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,6 +21,7 @@ Route::get('/', function () {
 
 /* RUTA PARA TODOS LOS METODOS */
 Route::resource('plane', PlaneController::class);
+Route::resource('tank', TankController::class);
 
 Route::middleware([
     'auth:sanctum',
