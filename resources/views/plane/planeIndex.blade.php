@@ -14,6 +14,7 @@
     <table border="1">
         <tr>
             <th>Nombre</th>
+            <th>Categoria</th>
             <th>País</th>
             <th>Editar</th>
             <th>Eliminar</th>
@@ -23,6 +24,7 @@
                 <td>
                     <a href="/plane/{{ $plane->id }}">{{ $plane->name }}</a>
                 </td>
+                <td>{{ $plane->category }}</td>
                 <td>{{ $plane->country }}</td>
                 <td>
                     <a href="/plane/{{ $plane->id }}/edit">Editar</a>

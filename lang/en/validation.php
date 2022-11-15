@@ -152,9 +152,86 @@ return [
     |
     */
 
+    //En este arreglo se crean los mensajes personalizados
     'custom' => [
         'attribute-name' => [
             'rule-name' => 'custom-message',
+        ],
+        //Atributo compartido por avion y tanque
+        'name'=> [
+            'required' => 'El :attribute es un campo requerido',
+            'max' => 'El :attribute es demasiado largo'
+        ],
+        //Atributo compartido por avion y tanque
+        'year' => [
+            'required' => 'El :attribute es un campo requerido',
+            'integer' => 'El :attribute debe ser número entero',
+            'numeric' => 'El :attribute debe ser escrito en número'
+        ],
+        //Atributo compartido por avion y tanque
+        'country' => [
+            'required' => 'El :attribute es un campo requerido'
+        ],
+        //Atributo de avion
+        'machine_guns' => [
+            'digits_between' => 'Las cantidad de :attribute es demasiado grande, verifique de nuevo',
+            'integer' => 'Las :attribute deben ser número entero',
+            'numeric' => 'Las :attribute deben ser escritas en número'
+        ],
+        //Atributo de avion
+        'cannons' => [
+            'digits_between' => 'Las cantidad de :attribute es demasiado grande, verifique de nuevo',
+            'integer' => 'Los :attribute deben ser número entero',
+            'numeric' => 'Los :attribute deben ser escritos en número'
+        ],
+        //Atributo de avion
+        'turrets' => [
+            'digits_between' => 'Las cantidad de :attribute es demasiado grande, verifique de nuevo',
+            'integer' => 'Las :attribute deben ser número entero',
+            'numeric' => 'Las :attribute deben ser escritas en número'
+        ],
+        //Atributo de avion
+        'max_height_m' => [
+            'required' => 'La :attribute es un campo requerido',
+            'digits_between' => 'La :attribute es demasiado grande, verifique de nuevo',
+            'integer' => 'La :attribute debe ser número entero',
+            'numeric' => 'La :attribute debe ser escrita en número'
+        ],
+        //Atributo compartido por avion y tanque
+        'crew' => [
+            'required' => 'La :attribute es un campo requerido',
+            'integer' => 'La :attribute debe ser número entero',
+            'numeric' => 'La :attribute debe ser escrita en número'
+        ],
+        //Atributo compartido por avion y tanque
+        'max_speed_kmh' => [
+            'required' => 'La :attribute es un campo requerido',
+            'digits_between' => 'La :attribute es demasiado grande, verifique de nuevo',
+            'integer' => 'La :attribute debe ser número entero',
+            'numeric' => 'La :attribute debe ser escrita en número'
+        ],
+        //Atributo compartido por avion y tanque
+        'weight_kg' => [
+            'required' => 'El :attribute es un campo requerido',
+            'digits_between' => 'El :attribute es demasiado grande, verifique de nuevo',
+            'integer' => 'El :attribute debe ser número entero',
+            'numeric' => 'El :attribute debe ser escrito en número'
+        ],
+        //Atributo compartido por avion y tanque
+        'category' => [
+            'required' => 'La :attribute es un campo requerido',
+            'max' => 'La longitud de :attribute es demasiado larga'
+        ],
+        //Atributo compartido por avion y tanque
+        'description' => [
+            'required' => 'La :attribute es un campo requerido',
+            'max' => 'La :attrubute es demasiado larga, considere resumirla'
+        ],
+        //Atributo de tanque
+        'caliber_mm' => [
+            'digits_between' => 'El :attribute es demasiado grande',
+            'integer' => 'El :attribute debe ser número entero',
+            'numeric' => 'El :attribute debe ser escrito en número'
         ],
     ],
 
@@ -169,6 +246,25 @@ return [
     |
     */
 
-    'attributes' => [],
+    //En este arreglo se fijan los nombres personalizados de los atributos
+    'attributes' => [
+        //Atributo compartido por avion y tanque
+        'name' => 'nombre',
+        'year' => 'año',
+        'country' => 'país',
+        //Atributo de avion
+        'machine_guns' => 'ametralladoras',
+        'cannons' => 'cañones',
+        'turrets' => 'torretas',
+        'max_height_m' => 'altura maxima',
+        //Atributo compartido por avion y tanque
+        'crew' => 'tripulacion',
+        'max_speed_kmh' => 'velocidad maxima',
+        'weight_kg' => 'peso',
+        'category' => 'categoria',
+        'description' => 'descripción',
+        //Atributo de tanque
+        'caliber_mm' => 'calibre',
+    ],
 
 ];

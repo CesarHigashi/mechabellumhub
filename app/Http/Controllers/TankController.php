@@ -50,12 +50,12 @@ class TankController extends Controller
         //Validar
         $request->validate([
             'name' => 'required|max:50',
-            'year' => 'required',
+            'year' => 'required|integer|numeric',
             'country' => 'required',
-            'caliber_mm' => 'digits_between:0,3',
-            'crew' => 'required',
-            'max_speed_kmh' => 'required|digits_between:1,4',
-            'weight_kg' => 'required|digits_between:1,4',
+            'caliber_mm' => 'digits_between:0,3|integer|numeric',
+            'crew' => 'required|integer|numeric',
+            'max_speed_kmh' => 'required|digits_between:1,4|integer|numeric',
+            'weight_kg' => 'required|digits_between:1,4|integer|numeric',
             'category' => 'required|max:30',
             'description' => 'required|max:500',
         ]);
@@ -99,12 +99,12 @@ class TankController extends Controller
     {
         $request->validate([
             'name' => 'required|max:50',
-            'year' => 'required',
+            'year' => 'required|integer|numeric',
             'country' => 'required',
-            'caliber_mm' => 'digits_between:0,3',
-            'crew' => 'required',
-            'max_speed_kmh' => 'required|digits_between:1,4',
-            'weight_kg' => 'required|digits_between:1,4',
+            'caliber_mm' => 'digits_between:0,3|integer|numeric',
+            'crew' => 'required|integer|numeric',
+            'max_speed_kmh' => 'required|digits_between:1,4|integer|numeric',
+            'weight_kg' => 'required|digits_between:1,4|integer|numeric',
             'category' => 'required|max:30',
             'description' => 'required|max:500',
         ]);
