@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Nation;
 use App\Models\Plane;
 use Illuminate\Http\Request;
 
@@ -36,7 +37,9 @@ class PlaneController extends Controller
      */
     public function create()
     {
-        return view('plane/planeCreate');
+        //Consulta las naciones y las manda con compact a la vista
+        $nations = Nation::all();
+        return view('plane/planeCreate', compact('nations'));
     }
 
     /**
@@ -51,7 +54,8 @@ class PlaneController extends Controller
         $request->validate([
             'name' => 'required|max:50',
             'year' => 'required|integer|numeric',
-            'country' => 'required',
+            //'country' => 'required',
+            'nations_id' => 'required|max:25',
             'machine_guns' => 'digits_between:0,2|integer|numeric',
             'cannons' => 'digits_between:0,2|integer|numeric',
             'turrets' => 'digits_between:0,2|integer|numeric',
@@ -62,6 +66,10 @@ class PlaneController extends Controller
             'category' => 'required|max:30',
             'description' => 'required|max:500',
         ]);
+
+        //Sentencia para unir la info de nacion con el avion
+        //$request->merge(['nations_id' => Nation::id()]);
+
         //Insertar en BD
         //Usa el modelo para mandar informacion a la base de datos
         Plane::create($request->all());
@@ -77,6 +85,7 @@ class PlaneController extends Controller
      */
     public function show(Plane $plane)
     {
+        
         return view('/plane/planeShow', compact('plane'));
     }
 
@@ -88,7 +97,9 @@ class PlaneController extends Controller
      */
     public function edit(Plane $plane)
     {
-        return view('plane/planeEdit', compact('plane'));
+        //Consulta las naciones y las manda con compact a la vista
+        $nations = Nation::all();
+        return view('plane/planeEdit', compact('plane', 'nations'));
     }
 
     /**
@@ -103,7 +114,8 @@ class PlaneController extends Controller
         $request->validate([
             'name' => 'required|max:50',
             'year' => 'required|integer|numeric',
-            'country' => 'required',
+            //'country' => 'required',
+            'nations_id' => 'required|max:25',
             'machine_guns' => 'digits_between:0,2|integer|numeric',
             'cannons' => 'digits_between:0,2|integer|numeric',
             'turrets' => 'digits_between:0,2|integer|numeric',

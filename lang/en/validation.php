@@ -169,8 +169,12 @@ return [
             'numeric' => 'El :attribute debe ser escrito en número'
         ],
         //Atributo compartido por avion y tanque
-        'country' => [
+        /* 'country' => [
             'required' => 'El :attribute es un campo requerido'
+        ], */
+        'nation_id' => [
+            'required' => 'El :attribute es un campo requerido',
+            'max' => 'El :attribute tiene una longitud muy larga'
         ],
         //Atributo de avion
         'machine_guns' => [
@@ -251,7 +255,8 @@ return [
         //Atributo compartido por avion y tanque
         'name' => 'nombre',
         'year' => 'año',
-        'country' => 'país',
+        //'country' => 'país',
+        'nation_id' => 'país',
         //Atributo de avion
         'machine_guns' => 'ametralladoras',
         'cannons' => 'cañones',
