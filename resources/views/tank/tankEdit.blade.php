@@ -8,58 +8,59 @@
 </head>
 <body>
     <h1>Formulario de tanque</h1>
-    <form action="/tank" method="POST">
+    <form action="/tank/{{$tank->id}}" method="POST">
         @csrf
+        @method('patch')
         <label for="name">Nombre del tanque</label>
-        <input type="text" name="name" id="name" value="{{ old('name') }}">
+        <input type="text" name="name" id="name" value="{{ old('name') ?? $tank->name }}">
         @error('name')
             <i>{{ $message }}</i>
         @enderror
         <br>
         <label for="year">Año de creación</label>
-        <input type="text" name="year" id="year" value="{{ old('year') }}">
+        <input type="text" name="year" id="year" value="{{ old('year') ?? $tank->year }}">
         @error('year')
             <i>{{ $message }}</i>
         @enderror
         <br>
         <label for="country">País de origen</label>
-        <input type="text" name="country" id="country" value="{{ old('country') }}">
+        <input type="text" name="country" id="country" value="{{ old('country') ?? $tank->country }}">
         @error('country')
             <i>{{ $message }}</i>
         @enderror
         <br>
         <label for="caliber_mm">Calibre (mm)</label>
-        <input type="number" name="caliber_mm" id="caliber_mm" value="{{ old('caliber_mm') }}">
+        <input type="number" name="caliber_mm" id="caliber_mm" value="{{ old('caliber_mm') ?? $tank->caliber_mm }}">
         @error('caliber_mm')
             <i>{{ $message }}</i>
         @enderror
         <br>
         <label for="crew">Tripulación</label>
-        <input type="number" name="crew" id="crew" value="{{ old('crew') }}">
+        <input type="number" name="crew" id="crew" value="{{ old('crew') ?? $tank->crew }}">
         @error('crew')
             <i>{{ $message }}</i>
         @enderror
         <br>
         <label for="max_speed_kmh">Velocidad maxima (Km/h)</label>
-        <input type="number" name="max_speed_kmh" id="max_speed_kmh" value="{{ old('max_speed_kmh') }}">
+        <input type="number" name="max_speed_kmh" id="max_speed_kmh" value="{{ old('max_speed_kmh') ?? $tank->max_speed_kmh }}">
         @error('max_speed_kmh')
             <i>{{ $message }}</i>
         @enderror
         <br>
         <label for="weight_kg">Peso (Kg)</label>
-        <input type="number" name="weight_kg" id="weight_kg" value="{{ old('weight_kg') }}">
+        <input type="number" name="weight_kg" id="weight_kg" value="{{ old('weight_kg') ?? $tank->weight_kg }}">
         @error('weight_kg')
             <i>{{ $message }}</i>
         @enderror
         <br>
         <label for="category">Categoria</label>
-        <input type="text" name="category" id="category" value="{{ old('category') }}">
+        <input type="text" name="category" id="category" value="{{ old('category') ?? $tank->category }}">
         @error('category')
             <i>{{ $message }}</i>
         @enderror
         <br>
         <label for="description">Descripción</label>
-        <textarea name="description" id="description"> {{ old('description') }} </textarea>
+        <textarea name="description" id="description"> {{ old('description') ?? $tank->description}} </textarea>
         @error('description')
             <i>{{ $message }}</i>
         @enderror
