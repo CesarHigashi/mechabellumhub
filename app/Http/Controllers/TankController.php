@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Nation;
 use App\Models\Tank;
 use Illuminate\Http\Request;
 
@@ -36,7 +37,8 @@ class TankController extends Controller
      */
     public function create()
     {
-        return view('tank/tankCreate');
+        $nations = Nation::all();
+        return view('tank/tankCreate', compact('nations'));
     }
 
     /**
@@ -51,7 +53,8 @@ class TankController extends Controller
         $request->validate([
             'name' => 'required|max:50',
             'year' => 'required|integer|numeric',
-            'country' => 'required',
+            //'country' => 'required',
+            'nations_id' => 'required|max:25',
             'caliber_mm' => 'digits_between:0,3|integer|numeric',
             'crew' => 'required|integer|numeric',
             'max_speed_kmh' => 'required|digits_between:1,4|integer|numeric',
@@ -85,7 +88,8 @@ class TankController extends Controller
      */
     public function edit(Tank $tank)
     {
-        return view('tank/tankEdit', compact('tank'));
+        $nations = Nation::all();
+        return view('tank/tankEdit', compact('tank', 'nations'));
     }
 
     /**
@@ -100,7 +104,8 @@ class TankController extends Controller
         $request->validate([
             'name' => 'required|max:50',
             'year' => 'required|integer|numeric',
-            'country' => 'required',
+            //'country' => 'required',
+            'nations_id' => 'required|max:25',
             'caliber_mm' => 'digits_between:0,3|integer|numeric',
             'crew' => 'required|integer|numeric',
             'max_speed_kmh' => 'required|digits_between:1,4|integer|numeric',

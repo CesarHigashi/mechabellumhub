@@ -32,7 +32,7 @@
                 <td>
                     <a href="/tank/{{ $tank->id }}">{{ $tank->name }}</a>
                 </td>
-                <td>{{ $tank->country }}</td>
+                <td>{{ $tank->nations->name }}</td>
                 <td>
                     <a href="/tank/{{ $tank->id }}/edit">Editar</a>
                 </td>
@@ -68,7 +68,7 @@
                         <div class="stars"></div>
                         <div class="simpletxt">
                             <h3 class="name">{{ $tank->name }} </h3>
-                            <p> {{ $tank->country }} </p>
+                            <p> {{ $tank->nations->name }} </p>
                             <h4 class="price"> {{ $tank->category }} </h4>
                             <a class="" href="/tank/{{ $tank->id }}">LEER MÁS</a><br>    
                         </div>

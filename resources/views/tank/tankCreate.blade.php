@@ -36,9 +36,17 @@
                 @enderror
                 <br>
 
-                <label for="country">País</label>
-                <input type="text" class="form-control name-form" placeholder="País de origen" name="country" id="country" value="{{ old('country') }}">
-                @error('country')
+                <!-- FALTA RESOLVER QUE RECUPERE EL VALOR SI SE EQUIVOCA -->
+                <label for="nations_id">País de origen</label>
+                <!-- --------------------------------- -->
+                <select name="nations_id" id="nations_id">
+                    @foreach ($nations as $nation)
+                        <option value="{{ $nation->id }}">{{ $nation->name }}</option>
+                    @endforeach
+                </select>
+                <!-- --------------------------------- -->
+                <!-- <input type="text" name="country" id="country" value="{{ old('country') }}"> -->
+                @error('nations_id')
                     <i>{{ $message }}</i>
                 @enderror
                 <br>
@@ -58,7 +66,7 @@
                 <br>
 
                 <label for="max_speed_kmh">Velocidad máxima</label>
-                <input type="number" class="form-control name-form" placeholder="Velocidad máxima (km/h)" name="max_speed_kmh" id="max_speed_kmh" value="{{ old('max_speed_kmh') }}">
+                <input type="number" class="form-control name-form" placeholder="Velocidad máxima en km/h" name="max_speed_kmh" id="max_speed_kmh" value="{{ old('max_speed_kmh') }}">
                 @error('max_speed_kmh')
                     <i>{{ $message }}</i>
                 @enderror

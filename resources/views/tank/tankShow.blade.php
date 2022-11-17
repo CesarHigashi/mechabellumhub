@@ -7,11 +7,18 @@
     <title>Mostrar</title>
 </head>
 <body>
-    <h1>Detalle del tanque</h1>
+    <h1>Detalles del tanque</h1>
 
-    <h2>{{ $tank->name }}</h2>
-    <h2>{{ $tank->country }}</h2>
-    <h2>{{ $tank->category }}</h2>
+    <h4>Nombre del tanque: {{ $tank->name }}</h4>
+    <h4>País de origen: {{ $tank->country }}</h4>
+    <h4>Año de fabricación: {{ $tank->year }}</h4>
+    <h4>Categoría: {{ $tank->category }}</h4>
+    <h4>Calibre del cañón (mm): {{ $tank->caliber_mm }}</h4>
+    <h4>Tripulación: {{ $tank->crew }}</h4>
+    <h4>Velocidad máxima (km/h): {{ $tank->max_speed_kmh }}</h4>
+    <h4>Peso (kg): {{ $tank->weight_kg }}</h4>
+    <h4>Descripción: {{ $tank->description }}</h4>
+
     <br>
     <a href="/tank">Regresar al listado</a>
 </body>
