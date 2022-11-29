@@ -20,9 +20,9 @@
     <div class = "create-form">
         <h1>Formulario de avión</h1>
         <div class="form-group group-coustume">
-            <form action="/plane" method="POST">
+            <form action="/plane/{{$plane->id}}" method="POST"> <!-- {{route('plane.update', $plane)}} -->
                 @csrf
-                
+                @method('patch')
                 <label for="name">Nombre</label>
                 <input class="form-control name-form" placeholder="Nombre del avión" type="text" name="name" id="name" value="{{ old('name') ?? $plane->name  }}">
                 @error('name')
@@ -37,16 +37,12 @@
                 @enderror
                 <br>
 
-                <!-- FALTA RESOLVER QUE RECUPERE EL VALOR SI SE EQUIVOCA -->
                 <label for="nations_id">País de origen</label>
-                <!-- --------------------------------- -->
                 <select name="nations_id" id="nations_id">
                     @foreach ($nations as $nation)
-                        <option value="{{ $nation->id }}">{{ $nation->name }}</option>
+                        <option value="{{ $nation->id }}" @selected( old('nations_id') == $nation->id ?? $plane->nations_id == $nation->id)>{{ $nation->name }}</option>
                     @endforeach
                 </select>
-                <!-- --------------------------------- -->
-                <!-- <input type="text" name="country" id="country" value="{{ old('country') }}"> -->
                 @error('nations_id')
                     <i>{{ $message }}</i>
                 @enderror

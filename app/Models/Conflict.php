@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Conflict extends Model
 {
     use HasFactory;
+    
+    public function nations(){
+        return $this->belongsToMany(Nation::class);
+    }
 }

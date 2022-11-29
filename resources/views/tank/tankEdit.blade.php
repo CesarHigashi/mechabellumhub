@@ -21,7 +21,7 @@
         <div class="form-group group-coustume">
             <form action="/tank/{{$tank->id}}" method="POST">
                 @csrf
-
+                @method('patch')
                 <label for="year">Nombre del Tanque</label>
                 <input type="text" class="form-control name-form" placeholder="Nombre del tanque" name="name" id="name" value="{{ old('name') ?? $tank->name }}">
                 @error('name')
@@ -36,16 +36,12 @@
                 @enderror
                 <br>
 
-                <!-- FALTA RESOLVER QUE RECUPERE EL VALOR SI SE EQUIVOCA -->
                 <label for="nations_id">País de origen</label>
-                <!-- --------------------------------- -->
                 <select name="nations_id" id="nations_id">
                     @foreach ($nations as $nation)
-                        <option value="{{ $nation->id }}">{{ $nation->name }}</option>
+                        <option value="{{ $nation->id }}" @selected( old('nations_id') == $nation->id ?? $tank->nations_id == $nation->id)>{{ $nation->name }}</option>
                     @endforeach
                 </select>
-                <!-- --------------------------------- -->
-                <!-- <input type="text" name="country" id="country" value="{{ old('country') }}"> -->
                 @error('nations_id')
                     <i>{{ $message }}</i>
                 @enderror

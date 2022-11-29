@@ -37,5 +37,30 @@ class NationSeeder extends Seeder
             'capital' => 'Tokio',
             'continent' => 'Asia',
         ]);
+        DB::table('nations')->insert([
+            'name' => 'Unión Sovietica',
+            'capital' => 'Moscu',
+            'continent' => 'Europa',
+        ]);
+        DB::table('nations')->insert([
+            'name' => 'Italia',
+            'capital' => 'Roma',
+            'continent' => 'Europa',
+        ]);
+        DB::table('nations')->insert([
+            'name' => 'Francia',
+            'capital' => 'París',
+            'continent' => 'Europa',
+        ]);
+        DB::table('nations')->insert([
+            'name' => 'China',
+            'capital' => 'Pekin',
+            'continent' => 'Asia',
+        ]);
+        DB::table('nations')->insert([
+            'name' => 'Suecia',
+            'capital' => 'Estocolomo',
+            'continent' => 'Europa',
+        ]);
     }
 }
