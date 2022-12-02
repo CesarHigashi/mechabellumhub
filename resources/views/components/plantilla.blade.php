@@ -18,13 +18,11 @@
 </head>
 
 <body>
-
-    <x-navbar/>
+    
     {{-- <h1> {{ $titulo }} </h1> --}}
-    <div class="my-3 py-2">
+    <div>
         {{ $slot }}
     </div>
-    {{-- <x-footer/> --}}
 
     <!-- Recursos de JS -->
     <script type="text/javascript" src="styles/source/bootstrap-3.3.6-dist/js/jquery.js"></script>

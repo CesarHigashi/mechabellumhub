@@ -1,14 +1,3 @@
-/*
- Theme Name: GARAGE
- Author: Web Domus ITALIA
- Author URI: http://www.webdomus.net/
- Description: GARAGE a multi-purpose HTML5 template built with latest Bootstrap framework. It offers flexible solutions, responsive, well documented and comes packed with tons of feature and options which they can be easily customized! It is a perfect solution for all kinds of businesses from small businesses to startups and bloggers.
- Version: 1.0.0
- License:  GARAGE template is under Creative Commons Attribution 4.0 International License.
- Template: GARAGE
- */
-
-
 .allcontain{
 	max-width: 1920px;
 	margin-left: auto;
@@ -22,6 +11,9 @@
 	padding: 0px;
 }
 
+.center{
+	margin: auto;
+}
 .socialicon{
 list-style-type: none;
 display: inline-block;
@@ -119,15 +111,6 @@ padding-left: 5%;
 
 /*----------------------End Header --------------------*/
  
-.logo{
-	position: absolute;
-	float: left;
-	z-index: 999;
-	width:124px;
-	height: 124px;
-	padding-top: 9px;
-
-}
 .topnav{
 	background: none;
 }
@@ -183,7 +166,7 @@ padding-left: 5%;
  #navbarontop>button:hover{
  	background-color: #C59E47;
  	color: #fff;
- }
+ }toggle
  .dropdowncostume{
  	margin-left: 0px;
  }
@@ -1541,10 +1524,7 @@ left: 0%;
   		padding-left: 20px;
 
   	}
-  	.bottomlinks>li>a{
-  		
 
-  	}
   	.bottomlinks>li{
   	float: none;
   text-align: center;
@@ -1570,10 +1550,6 @@ left: 0%;
   	}
   	.bottomlinks>{
   		padding-left: 20px;
-
-  	}
-  	.bottomlinks>li>a{
-  		
 
   	}
   	.bottomlinks>li{
