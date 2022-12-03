@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ConflictController;
+use App\Http\Controllers\NationController;
 use App\Http\Controllers\PlaneController;
 use App\Http\Controllers\TankController;
 use Illuminate\Support\Facades\Route;
@@ -22,6 +24,9 @@ Route::get('/', function () {
 /* RUTA PARA TODOS LOS METODOS */
 Route::resource('plane', PlaneController::class);
 Route::resource('tank', TankController::class);
+
+Route::resource('conflict',ConflictController::class);
+Route::resource('nation',NationController::class);
 
 Route::middleware([
     'auth:sanctum',

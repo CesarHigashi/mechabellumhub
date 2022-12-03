@@ -5,6 +5,17 @@ namespace App\Http\Controllers;
 use App\Models\Nation;
 use Illuminate\Http\Request;
 
+/* Rutas */
+/*
+  GET|HEAD        nation ........................... nation.index › NationController@index
+  POST            nation ........................... nation.store › NationController@store
+  GET|HEAD        nation/create .................. nation.create › NationController@create
+  GET|HEAD        nation/{nation} .................... nation.show › NationController@show
+  PUT|PATCH       nation/{nation} ................ nation.update › NationController@update
+  DELETE          nation/{nation} .............. nation.destroy › NationController@destroy
+  GET|HEAD        nation/{nation}/edit ............... nation.edit › NationController@edit
+ */
+
 class NationController extends Controller
 {
     /**
