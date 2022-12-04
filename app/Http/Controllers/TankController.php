@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\NotifyTank;
 use App\Models\Nation;
 use App\Models\Tank;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Mail;
+use App\Models\User;
 
 class TankController extends Controller
 {    
@@ -104,7 +107,12 @@ class TankController extends Controller
         ]);
         //Insertar en BD
         //Usa el modelo para mandar informacion a la base de datos
-        Tank::create($request->all());
+        $tank = Tank::create($request->all());
+        $usuario = User::where('rol', 'admin')->first();
+        
+        //Correo para avisar de nuevo tanque
+        Mail::to($usuario->email)->send(new NotifyTank($tank));
+
         //Redirigir
         return redirect('/tank');
     }
