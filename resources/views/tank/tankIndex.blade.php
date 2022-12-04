@@ -92,7 +92,7 @@
             @foreach ($tanks as $tank)
                 <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                     <div class="txthover">
-                        <img src="/styles/image/M4-Sherman.png" alt="M4-Sherman">
+                        <img src="{{ \Storage::url($tank->image->location)}}" alt="Tanque">
                         <div class="txtcontent">
                             <div class="stars"></div>
                             <div class="simpletxt">

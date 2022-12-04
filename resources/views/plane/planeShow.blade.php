@@ -21,6 +21,7 @@
     <h4>Velocidad maxima: {{ $plane->max_speed_kmh }} km/h</h4>
     <h4>Peso: {{ $plane->weight_kg }} kg</h4>
     <h4>Descripción: {{ $plane->description }}</h4>
+    <img src="{{ \Storage::url($plane->image->location)}}" alt="Avión">
     <br>
     <a href="/plane">Regresar al listado</a>
 </body>

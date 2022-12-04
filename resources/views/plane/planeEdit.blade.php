@@ -20,7 +20,7 @@
     <div class = "create-form">
         <h1>Formulario de avión</h1>
         <div class="form-group group-coustume">
-            <form action="/plane/{{$plane->id}}" method="POST"> <!-- {{route('plane.update', $plane)}} -->
+            <form action="/plane/{{$plane->id}}" method="POST" enctype="multipart/form-data"> <!-- {{route('plane.update', $plane)}} -->
                 @csrf
                 @method('patch')
                 <label for="name">Nombre</label>
@@ -103,6 +103,11 @@
                     <i>{{ $message }}</i>
                 @enderror
                 <br>
+
+                <!-- subida de archivos -->
+
+                <label for="image">Subir imagen</label>
+                <input type="file" name="image" id="image" accept=".png, .jpg, .jpeg">
 
                 <label for="description">Descripción</label>
                 <textarea rows="4" cols="50" class="message-form" name="description" id="description"> {{ old('description') ?? $plane->description}} </textarea>

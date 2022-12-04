@@ -16,6 +16,10 @@ class Tank extends Model
     public function nations(){
         /* Un plane pertenece a una nation */
         return $this->belongsTo(Nation::class);
-    }                      
+    }   
+    
+    public function image(){
+        return $this->morphOne(Image::class, 'imageable');
+    }
 }
 

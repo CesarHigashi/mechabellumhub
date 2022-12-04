@@ -93,7 +93,7 @@
             @foreach ($planes as $plane)
                 <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                     <div class="txthover">
-                        <img src="/styles/image/B17.jpg" alt="B-17">
+                        <img src="{{ \Storage::url($plane->image->location)}}" alt="Avión">
                         <div class="txtcontent">
                             <div class="stars"></div>
                             <div class="simpletxt">

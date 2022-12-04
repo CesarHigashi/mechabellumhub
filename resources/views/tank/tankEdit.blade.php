@@ -19,7 +19,7 @@
     <div class = "create-form">
         <h1>Formulario de tanque</h1>
         <div class="form-group group-coustume">
-            <form action="/tank/{{$tank->id}}" method="POST">
+            <form action="/tank/{{$tank->id}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('patch')
                 <label for="year">Nombre del Tanque</label>
@@ -81,6 +81,9 @@
                     <i>{{ $message }}</i>
                 @enderror
                 <br>
+
+                <label for="image">Subir imagen</label>
+                <input type="file" name="image" id="image" accept=".png, .jpg, .jpeg">
 
                 <label for="description" class = "description-form">Descripción</label>
                 <textarea rows="4" cols="50" class="message-form" name="description" id="description"> {{ old('description') ?? $tank->description }} </textarea>

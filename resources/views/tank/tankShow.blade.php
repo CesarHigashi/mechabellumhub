@@ -18,7 +18,7 @@
     <h4>Velocidad máxima (km/h): {{ $tank->max_speed_kmh }}</h4>
     <h4>Peso (kg): {{ $tank->weight_kg }}</h4>
     <h4>Descripción: {{ $tank->description }}</h4>
-
+    <img src="{{ \Storage::url($tank->image->location)}}" alt="Tanque">
     <br>
     <a href="/tank">Regresar al listado</a>
 </body>

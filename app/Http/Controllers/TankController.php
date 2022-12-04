@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Image;
 use App\Mail\NotifyTank;
 use App\Models\Nation;
 use App\Models\Tank;
@@ -10,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Mail;
 use App\Models\User;
+use Illuminate\Support\Facades\Storage;
 
 class TankController extends Controller
 {    
@@ -113,6 +115,18 @@ class TankController extends Controller
         //Correo para avisar de nuevo tanque
         Mail::to($usuario->email)->send(new NotifyTank($tank));
 
+
+        //Subida de archivo
+        if($request->file('image')->isValid()){
+            $location = $request->image->store('public');
+            $image = new Image();
+            $image->location = $location;
+            $image->original_name = $request->image->getClientOriginalName();
+            $image->mime='';
+
+            $tank->image()->save($image);
+        }
+
         //Redirigir
         return redirect('/tank');
     }
@@ -167,7 +181,23 @@ class TankController extends Controller
             'description' => 'required|max:500',
         ]);
 
-        Tank::where('id',$tank->id)->update($request->except('_token', '_method'));
+        //Borra archivo viejo
+        $file = Image::whereId($tank->image->id)->firstOrFail();
+        unlink(public_path(Storage::url($file->location)));
+        $file->forceDelete($file->id);
+
+        //Subida de archivo
+        if($request->file('image')->isValid()){
+            $location = $request->image->store('public');
+            $image = new Image();
+            $image->location = $location;
+            $image->original_name = $request->image->getClientOriginalName();
+            $image->mime='';
+
+            $tank->image()->save($image);
+        }
+
+        Tank::where('id',$tank->id)->update($request->except('_token', '_method', 'image'));
 
         return redirect('/tank');
     }
@@ -184,6 +214,10 @@ class TankController extends Controller
         if (! Gate::allows('edita-vehiculo')){
             abort(403);
         }
+
+        //Hacer soft delete a la imagen
+        $file= Image::whereId($tank->image->id)->firstOrFail();
+        $file->delete($file->id);
 
         $tank -> delete();
         return redirect('/tank');

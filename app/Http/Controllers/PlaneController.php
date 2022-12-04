@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Image;
 use App\Models\Nation;
 use App\Models\Plane;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
@@ -90,6 +92,7 @@ class PlaneController extends Controller
      */
     public function store(Request $request)
     {
+        //dd($request);
         //Validar
         $request->validate([
             'name' => 'required|max:50',
@@ -112,7 +115,19 @@ class PlaneController extends Controller
 
         //Insertar en BD
         //Usa el modelo para mandar informacion a la base de datos
-        Plane::create($request->all());
+        $plane=Plane::create($request->all());
+
+        //Subida de archivo
+        if ($request->file('image')->isValid()){
+            $location = $request->image->store('public');
+            $image = new Image();
+            $image->location = $location;
+            $image->original_name = $request->image->getClientOriginalName();
+            $image->mime='';
+
+            $plane->image()->save($image);
+        }
+
         //Redirigir
         return redirect('/plane');
     }
@@ -171,7 +186,23 @@ class PlaneController extends Controller
             'description' => 'required|max:500',
         ]);
 
-        Plane::where('id',$plane->id)->update($request->except('_token', '_method'));
+        //Borra archivo viejo
+        $file = Image::whereId($plane->image->id)->firstOrFail();
+        unlink(public_path(Storage::url($file->location)));
+        $file->forceDelete($file->id);
+
+        //Subida de archivo
+        if($request->file('image')->isValid()){
+            $location = $request->image->store('public');
+            $image = new Image();
+            $image->location = $location;
+            $image->original_name = $request->image->getClientOriginalName();
+            $image->mime='';
+
+            $plane->image()->save($image);
+        }
+
+        Plane::where('id',$plane->id)->update($request->except('_token', '_method', 'image'));
 
         return redirect('/plane');
     }
@@ -188,6 +219,11 @@ class PlaneController extends Controller
         if (! Gate::allows('edita-vehiculo')){
             abort(403);
         }
+
+        //Hace soft delete a la imagen
+        $file= Image::whereId($plane->image->id)->firstOrFail();
+        //unlink(public_path(Storage::url($file->location)));
+        $file->delete($file->id);
 
         $plane -> delete();
         return redirect('/plane');
