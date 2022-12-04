@@ -61,7 +61,7 @@ class TankController extends Controller
         }
 
         Tank::withTrashed()->find($id)->restore();
-        return redirect('/tank');
+        return redirect('/tank')->with('success','Tanque restaurado de forma exitosa.');
     }
 
     public function restoreAll()
@@ -72,7 +72,7 @@ class TankController extends Controller
         }
         
         Tank::onlyTrashed()->restore();
-        return redirect('/tank');
+        return redirect('/tank')->with('success','Todos los tanques restaurados de forma exitosa.');
     }
 
     /**
@@ -128,7 +128,7 @@ class TankController extends Controller
         }
 
         //Redirigir
-        return redirect('/tank');
+        return redirect('/tank')->with('success','Tanque creado de forma exitosa.');
     }
 
     /**
@@ -199,7 +199,7 @@ class TankController extends Controller
 
         Tank::where('id',$tank->id)->update($request->except('_token', '_method', 'image'));
 
-        return redirect('/tank');
+        return redirect('/tank')->with('success','Tanque actualizado de forma exitosa.');
     }
 
     /**
@@ -220,6 +220,6 @@ class TankController extends Controller
         $file->delete($file->id);
 
         $tank -> delete();
-        return redirect('/tank');
+        return redirect('/tank')->with('delete','Tanque eliminado de forma exitosa.');
     }
 }

@@ -13,6 +13,17 @@
         <br><br>
     @endif
 
+    @if (session('success'))
+        <div class="alert alert-success" role="alert">
+            {{ session('success') }}
+        </div>
+    @endif
+    @if (session('delete'))
+        <div class="alert alert-danger" role="alert">
+            {{ session('delete') }}
+        </div>
+    @endif
+
     <!-- Esta seccion son botones para ver listados de todos los registros o solo los eliminados -->
     @if(request()->has('view_deleted'))
         <!-- En estas dos, el primero es para regresar al listado completo cuando estamos viendo los registros eliminados -->

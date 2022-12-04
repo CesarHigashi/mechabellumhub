@@ -58,7 +58,7 @@ class PlaneController extends Controller
         }
 
         Plane::withTrashed()->find($id)->restore();
-        return redirect('/plane');
+        return redirect('/plane')->with('success','Avión restaurado de forma exitosa.');
     }
 
     public function restoreAll()
@@ -69,7 +69,7 @@ class PlaneController extends Controller
         }
         
         Plane::onlyTrashed()->restore();
-        return redirect('/plane');
+        return redirect('/plane')->with('success','Todos los aviones restaurados de forma exitosa.');
     }
 
     /**
@@ -129,7 +129,7 @@ class PlaneController extends Controller
         }
 
         //Redirigir
-        return redirect('/plane');
+        return redirect('/plane')->with('success','Avión creado de forma exitosa.');
     }
 
     /**
@@ -204,7 +204,7 @@ class PlaneController extends Controller
 
         Plane::where('id',$plane->id)->update($request->except('_token', '_method', 'image'));
 
-        return redirect('/plane');
+        return redirect('/plane')->with('success','Avión actualizado de forma exitosa.');
     }
 
     /**
@@ -226,6 +226,6 @@ class PlaneController extends Controller
         $file->delete($file->id);
 
         $plane -> delete();
-        return redirect('/plane');
+        return redirect('/plane')->with('delete','Avión eliminado de forma exitosa.');
     }
 }

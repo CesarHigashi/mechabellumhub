@@ -58,7 +58,7 @@ class ConflictController extends Controller
         }
         
         Conflict::withTrashed()->find($id)->restore();
-        return redirect('/conflict');
+        return redirect('/conflict')->with('success','Conflicto restaurado de forma exitosa.');
     }
 
     public function restoreAll()
@@ -69,7 +69,7 @@ class ConflictController extends Controller
         }        
 
         Conflict::onlyTrashed()->restore();
-        return redirect('/conflict');
+        return redirect('/conflict')->with('success','Todos los conflictos restaurados de forma exitosa.');
     }
 
 
@@ -108,7 +108,7 @@ class ConflictController extends Controller
 
         $conflict->nations()->attach($request->nation_id);
 
-        return redirect('/conflict');
+        return redirect('/conflict')->with('success','Conflicto creado de forma exitosa.');
     }
 
     /**
@@ -178,6 +178,6 @@ class ConflictController extends Controller
         /* Sin detach, para que los softdeletes funcionen bien */
         //$conflict->nations()->detach();
         $conflict->delete();
-        return redirect('/conflict');
+        return redirect('/conflict')->with('delete','Conflicto eliminado de forma exitosa.');
     }
 }
