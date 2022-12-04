@@ -10,13 +10,15 @@ use Illuminate\Support\Facades\Gate;
 
 /* Rutas */
 /*
-  GET|HEAD        conflict ..................... conflict.index › ConflictController@index
-  POST            conflict ..................... conflict.store › ConflictController@store
-  GET|HEAD        conflict/create ............ conflict.create › ConflictController@create
-  GET|HEAD        conflict/{conflict} ............ conflict.show › ConflictController@show
-  PUT|PATCH       conflict/{conflict} ........ conflict.update › ConflictController@update
-  DELETE          conflict/{conflict} ...... conflict.destroy › ConflictController@destroy
-  GET|HEAD        conflict/{conflict}/edit ....... conflict.edit › ConflictController@edit 
+    GET|HEAD        conflict ................................. conflict.index › ConflictController@index
+    POST            conflict ................................. conflict.store › ConflictController@store
+    GET|HEAD        conflict/create ........................ conflict.create › ConflictController@create
+    GET|HEAD        conflict/restore/{id} ................ conflict.restore › ConflictController@restore
+    GET|HEAD        conflict/restoreAll ........... conflict.restore.all › ConflictController@restoreAll
+    GET|HEAD        conflict/{conflict} ........................ conflict.show › ConflictController@show
+    PUT|PATCH       conflict/{conflict} .................... conflict.update › ConflictController@update
+    DELETE          conflict/{conflict} .................. conflict.destroy › ConflictController@destroy
+    GET|HEAD        conflict/{conflict}/edit ................... conflict.edit › ConflictController@edit
  */
 
 class ConflictController extends Controller

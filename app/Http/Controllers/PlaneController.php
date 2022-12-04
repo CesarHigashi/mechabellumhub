@@ -11,13 +11,15 @@ use Illuminate\Support\Facades\Gate;
 class PlaneController extends Controller
 {    
     /*
-        GET|HEAD        plane .................... plane.index › PlaneController@index
-        POST            plane .................... plane.store › PlaneController@store
-        GET|HEAD        plane/create ........... plane.create › PlaneController@create
-        GET|HEAD        plane/{plane} .............. plane.show › PlaneController@show
-        PUT|PATCH       plane/{plane} .......... plane.update › PlaneController@update
-        DELETE          plane/{plane} ........ plane.destroy › PlaneController@destroy
-        GET|HEAD        plane/{plane}/edit ......... plane.edit › PlaneController@edit
+        GET|HEAD        plane .......................................... plane.index › PlaneController@index
+        POST            plane .......................................... plane.store › PlaneController@store
+        GET|HEAD        plane/create ................................. plane.create › PlaneController@create
+        GET|HEAD        plane/restore/{id} ......................... plane.restore › PlaneController@restore
+        GET|HEAD        plane/restoreAll .................... plane.restore.all › PlaneController@restoreAll
+        GET|HEAD        plane/{plane} .................................... plane.show › PlaneController@show
+        PUT|PATCH       plane/{plane} ................................ plane.update › PlaneController@update
+        DELETE          plane/{plane} .............................. plane.destroy › PlaneController@destroy
+        GET|HEAD        plane/{plane}/edit ............................... plane.edit › PlaneController@edit
     */
     
     //Middleware autenticación

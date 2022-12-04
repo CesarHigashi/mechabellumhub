@@ -11,13 +11,15 @@ use Illuminate\Support\Facades\Gate;
 class TankController extends Controller
 {    
     /*
-        GET|HEAD        tank .................... tank.index › TankController@index
-        POST            tank .................... tank.store › TankController@store
-        GET|HEAD        tank/create ........... tank.create › TankController@create
-        GET|HEAD        tank/{tank} .............. tank.show › TankController@show
-        PUT|PATCH       tank/{tank} .......... tank.update › TankController@update
-        DELETE          tank/{tank} ........ tank.destroy › TankController@destroy
-        GET|HEAD        tank/{tank}/edit ......... tank.edit › TankController@edit
+        GET|HEAD        tank ............................................. tank.index › TankController@index
+        POST            tank ............................................. tank.store › TankController@store
+        GET|HEAD        tank/create .................................... tank.create › TankController@create
+        GET|HEAD        tank/restore/{id} ............................ tank.restore › TankController@restore
+        GET|HEAD        tank/restoreAll ....................... tank.restore.all › TankController@restoreAll
+        GET|HEAD        tank/{tank} ........................................ tank.show › TankController@show
+        PUT|PATCH       tank/{tank} .................................... tank.update › TankController@update
+        DELETE          tank/{tank} .................................. tank.destroy › TankController@destroy
+        GET|HEAD        tank/{tank}/edit ................................... tank.edit › TankController@edit
     */
     
     //Middleware autenticación
