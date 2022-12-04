@@ -12,19 +12,29 @@
         <br><br>
     @endif
     
-    <!-- Esta seccion son botones para ver listados de todos los registros o solo los eliminados -->
-    @if(request()->has('view_deleted'))
-        <!-- En estas dos, el primero es para regresar al listado completo cuando estamos viendo los registros eliminados -->
-        <a href="{{ route('tank.index') }}">Ver todos los tanques</a>
-        <!-- El segundo es para restaurar todo lo eliminado de ese modelo -->
-        <a href="{{ route('tank.restore.all') }}">Restaurar todo</a>
+    @if(\Auth::user() != null)
+        @if (\Auth::user()->rol == "admin")
+            <!-- Esta seccion son botones para ver listados de todos los registros o solo los eliminados -->
+            @if(request()->has('view_deleted'))
+                <!-- En estas dos, el primero es para regresar al listado completo cuando estamos viendo los registros eliminados -->
+                <a href="{{ route('tank.index') }}">Ver todos los tanques</a>
+                <!-- El segundo es para restaurar todo lo eliminado de ese modelo -->
+                <a href="{{ route('tank.restore.all') }}">Restaurar todo</a>
+            @else
+                <!-- Este es para ver los registros eliminados -->
+                <a href="{{ route('tank.index', ['view_deleted' => 'DeletedRecords'])}}">Ver registros eliminados</a>
+            @endif
+        @endif
+    @endif    
+    <!-- Botón a la API, sólo lo ve el admin -->
+    @if(\Auth::user() != null)
+        @if (\Auth::user()->rol == "admin")
+            <a href="/api/tanks">Ver API</a>
+        @endif
     @else
-        <!-- Este es para ver los registros eliminados -->
-        <a href="{{ route('tank.index', ['view_deleted' => 'DeletedRecords'])}}">Ver registros eliminados</a>
+        <br><br>
     @endif
-    <!-- ++++++++++++++++++++IMPORTANTE++++++++++++++++ -->
-    <!-- Enlace a la API, metela en cosas de admin tambien -->
-    <a href="/api/tanks">Ver API</a>
+    
 
     <!-- <a href="/tank/create">Ir a formulario</a> -->
 

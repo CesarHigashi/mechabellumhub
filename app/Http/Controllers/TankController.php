@@ -50,12 +50,22 @@ class TankController extends Controller
     /* Metodos para restore */
     public function restore($id)
     {
+        //Validamos si es el administrador el que quiere editar un vehiculo
+        if (! Gate::allows('edita-vehiculo')){
+            abort(403);
+        }
+
         Tank::withTrashed()->find($id)->restore();
         return redirect('/tank');
     }
 
     public function restoreAll()
     {
+        //Validamos si es el administrador el que quiere editar un vehiculo
+        if (! Gate::allows('edita-vehiculo')){
+            abort(403);
+        }
+        
         Tank::onlyTrashed()->restore();
         return redirect('/tank');
     }

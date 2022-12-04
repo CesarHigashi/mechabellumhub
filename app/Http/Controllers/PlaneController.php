@@ -50,12 +50,22 @@ class PlaneController extends Controller
     /* Metodos de restore */
     public function restore($id)
     {
+        //Validamos si es el administrador el que quiere editar un vehiculo
+        if (! Gate::allows('edita-vehiculo')){
+            abort(403);
+        }
+
         Plane::withTrashed()->find($id)->restore();
         return redirect('/plane');
     }
 
     public function restoreAll()
     {
+        //Validamos si es el administrador el que quiere editar un vehiculo
+        if (! Gate::allows('edita-vehiculo')){
+            abort(403);
+        }
+        
         Plane::onlyTrashed()->restore();
         return redirect('/plane');
     }

@@ -19,9 +19,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [PlaneController::class, 'index']);
 
 /* RUTA PARA TODOS LOS METODOS */
 Route::resource('plane', PlaneController::class);
@@ -40,14 +38,12 @@ Route::get('/plane/restoreAll', [PlaneController::class, 'restoreAll'])->name('p
 Route::get('/conflict/restore/{id}', [ConflictController::class, 'restore'])->name('conflict.restore');
 Route::get('/conflict/restoreAll', [ConflictController::class, 'restoreAll'])->name('conflict.restore.all');
 
-
-
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        return redirect('plane');
     })->name('dashboard');
 });
