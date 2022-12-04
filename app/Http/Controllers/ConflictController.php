@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Conflict;
 use App\Models\Nation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 /* Rutas */
 /*
@@ -45,6 +47,11 @@ class ConflictController extends Controller
      */
     public function create()
     {
+        //Validamos si es el administrador el que quiere crear un conflicto
+        if (! Gate::allows('edita-nacionconflicto')){
+            abort(403);
+        }
+        
         $nations = Nation::all();
         return view('conflict/conflictCreate', compact('nations'));
     }
@@ -90,6 +97,11 @@ class ConflictController extends Controller
      */
     public function edit(Conflict $conflict)
     {
+        //Validamos si es el administrador el que quiere editar un conflicto
+        if (! Gate::allows('edita-nacionconflicto')){
+            abort(403);
+        }
+        
         $nations = Nation::all();
         return view('/conflict/conflictEdit', compact('conflict', 'nations'));
     }
@@ -125,6 +137,11 @@ class ConflictController extends Controller
      */
     public function destroy(Conflict $conflict)
     {
+        //Validamos si es el administrador el que quiere eliminar un conflicto
+        if (! Gate::allows('edita-nacionconflicto')){
+            abort(403);
+        }
+
         $conflict->nations()->detach();
         $conflict->delete();
         return redirect('/conflict');

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Nation;
 use App\Models\Tank;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class TankController extends Controller
 {    
@@ -94,6 +96,11 @@ class TankController extends Controller
      */
     public function edit(Tank $tank)
     {
+        //Validamos si es el administrador el que quiere editar un vehiculo
+        if (! Gate::allows('edita-vehiculo')){
+            abort(403);
+        }
+
         $nations = Nation::all();
         return view('tank/tankEdit', compact('tank', 'nations'));
     }
@@ -133,6 +140,11 @@ class TankController extends Controller
      */
     public function destroy(Tank $tank)
     {
+        //Validamos si es el administrador el que quiere eliminar un vehiculo
+        if (! Gate::allows('edita-vehiculo')){
+            abort(403);
+        }
+
         $tank -> delete();
         return redirect('/tank');
     }

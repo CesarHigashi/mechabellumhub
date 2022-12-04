@@ -24,5 +24,6 @@ class DatabaseSeeder extends Seeder
         
         $this->call(NationSeeder::class);
         $this->call(ConflictSeeder::class);
+        $this->call(UserSeeder::class);
     }
 }

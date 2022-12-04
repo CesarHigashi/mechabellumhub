@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Nation;
 use App\Models\Plane;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class PlaneController extends Controller
 {    
@@ -103,6 +105,11 @@ class PlaneController extends Controller
      */
     public function edit(Plane $plane)
     {
+        //Validamos si es el administrador el que quiere editar un vehiculo
+        if (! Gate::allows('edita-vehiculo')){
+            abort(403);
+        }
+        
         //Consulta las naciones y las manda con compact a la vista
         $nations = Nation::all();
         return view('/plane/planeEdit', compact('plane', 'nations'));
@@ -146,6 +153,11 @@ class PlaneController extends Controller
      */
     public function destroy(Plane $plane)
     {
+        //Validamos si es el administrador el que quiere eliminar un vehiculo
+        if (! Gate::allows('edita-vehiculo')){
+            abort(403);
+        }
+
         $plane -> delete();
         return redirect('/plane');
     }

@@ -2,8 +2,22 @@
 <div class="allcontain">
 	<div class="header">
 		<ul class="logreg">
-			<li><a href="http://mechabellumhub.test/login">Login </a> </li>
-			<li><a href="http://mechabellumhub.test/register"><span class="register">Registrarse</span></a></li>
+			@if (Route::has('login'))
+			@auth
+				<form action="{{ route('logout') }}" method="POST">
+					@csrf
+					<x-jet-dropdown-link href="{{ route('logout') }}"
+					onclick="event.preventDefault(); this.closest('form').submit();">
+					<span>Salir</span>
+					</x-jet-dropdown-link>
+				</form>     
+			@else
+				<li><a href="{{ route('login') }}">Login </a> </li>
+				@if (Route::has('register'))
+					<li><a href="{{ route('register') }}"><span class="register">Registrarse</span></a></li>
+				@endif
+			@endauth   
+			@endif
 		</ul>
 	</div>
 	<!-- Navbar Up -->
