@@ -22,8 +22,11 @@
         <!-- Este es para ver los registros eliminados -->
         <a href="{{ route('tank.index', ['view_deleted' => 'DeletedRecords'])}}">Ver registros eliminados</a>
     @endif
+    <!-- ++++++++++++++++++++IMPORTANTE++++++++++++++++ -->
+    <!-- Enlace a la API, metela en cosas de admin tambien -->
+    <a href="/api/tanks">Ver API</a>
 
-    <a href="/tank/create">Ir a formulario</a>
+    <!-- <a href="/tank/create">Ir a formulario</a> -->
 
     <table border="1">
         <tr>

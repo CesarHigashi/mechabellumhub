@@ -24,7 +24,11 @@
         <a href="{{ route('conflict.index', ['view_deleted' => 'DeletedRecords'])}}">Ver registros eliminados</a>
     @endif
 
-    <a href="/conflict/create">Ir a formulario</a>
+    <!-- ++++++++++++++++++++IMPORTANTE++++++++++++++++ -->
+    <!-- Enlace a la API, metela en cosas de admin tambien -->
+    <a href="/api/conflicts">Ver API</a>
+
+    <!-- <a href="/conflict/create">Ir a formulario</a> -->
 
     <table border="1">
         <tr>
