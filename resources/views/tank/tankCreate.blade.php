@@ -23,14 +23,14 @@
                 @csrf
 
                 <label for="year">Nombre</label>
-                <input type="text" class="form-control name-form" placeholder="Nombre del tanque" name="name" id="name" value="{{ old('name') }}">
+                <input type="text" class="form-control name-form" placeholder="Nombre del tanque" name="name" id="name" value="{{ old('name') }}" required>
                 @error('name')
                     <i>{{ $message }}</i>
                 @enderror
                 <br>
 
                 <label for="year">Año</label>
-                <input type="text" class="form-control name-form" placeholder="Año de creación" name="year" id="year" value="{{ old('year') }}">
+                <input type="text" class="form-control name-form" placeholder="Año de creación" name="year" id="year" value="{{ old('year') }}" required>
                 @error('year')
                     <i>{{ $message }}</i>
                 @enderror
@@ -52,42 +52,42 @@
                 <br>
 
                 <label for="caliber_mm">Calibre</label>
-                <input type="number" class="form-control name-form" placeholder="Calibre del cañón (mm)" name="caliber_mm" id="caliber_mm" value="{{ old('caliber_mm') }}">
+                <input type="number" class="form-control name-form" placeholder="Calibre del cañón (mm)" name="caliber_mm" id="caliber_mm" value="{{ old('caliber_mm') }}" required>
                 @error('caliber_mm')
                     <i>{{ $message }}</i>
                 @enderror
                 <br>
 
                 <label for="crew">Tripulación</label>
-                <input type="number" class="form-control name-form" placeholder="Tripulación del tanque" name="crew" id="crew" value="{{ old('crew') }}">
+                <input type="number" class="form-control name-form" placeholder="Tripulación del tanque" name="crew" id="crew" value="{{ old('crew') }}" required>
                 @error('crew')
                     <i>{{ $message }}</i>
                 @enderror
                 <br>
 
                 <label for="max_speed_kmh">Velocidad máxima</label>
-                <input type="number" class="form-control name-form" placeholder="Velocidad máxima en km/h" name="max_speed_kmh" id="max_speed_kmh" value="{{ old('max_speed_kmh') }}">
+                <input type="number" class="form-control name-form" placeholder="Velocidad máxima en km/h" name="max_speed_kmh" id="max_speed_kmh" value="{{ old('max_speed_kmh') }}" required>
                 @error('max_speed_kmh')
                     <i>{{ $message }}</i>
                 @enderror
                 <br>
 
                 <label for="weight_kg">Peso</label>
-                <input type="number" class="form-control name-form" placeholder="Peso (kg)" name="weight_kg" id="weight_kg" value="{{ old('weight_kg') }}">
+                <input type="number" class="form-control name-form" placeholder="Peso (kg)" name="weight_kg" id="weight_kg" value="{{ old('weight_kg') }}" required>
                 @error('weight_kg')
                     <i>{{ $message }}</i>
                 @enderror
                 <br>
 
                 <label for="category">Categoría</label>
-                <input type="text" class="form-control name-form" placeholder="Categoría de vehiculo" name="category" id="category" value="{{ old('category') }}">
+                <input type="text" class="form-control name-form" placeholder="Categoría de vehiculo" name="category" id="category" value="{{ old('category') }}" required>
                 @error('category')
                     <i>{{ $message }}</i>
                 @enderror
                 <br>
 
                 <label for="description" class = "description-form">Descripción</label>
-                <textarea rows="4" cols="50" class="message-form" name="description" id="description"> {{ old('description') }} </textarea>
+                <textarea rows="4" cols="50" class="message-form" name="description" id="description" required> {{ old('description') }} </textarea>
                 @error('description')
                     <i>{{ $message }}</i>
                 @enderror

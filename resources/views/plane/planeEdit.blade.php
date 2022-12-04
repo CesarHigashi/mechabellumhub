@@ -24,14 +24,14 @@
                 @csrf
                 @method('patch')
                 <label for="name">Nombre</label>
-                <input class="form-control name-form" placeholder="Nombre del avión" type="text" name="name" id="name" value="{{ old('name') ?? $plane->name  }}">
+                <input class="form-control name-form" placeholder="Nombre del avión" type="text" name="name" id="name" value="{{ old('name') ?? $plane->name  }}" required>
                 @error('name')
                     <i>{{ $message }}</i>
                 @enderror
                 <br>
 
                 <label for="year">Año</label>
-                <input class="form-control name-form" placeholder="Año de creación" type="text" name="year" id="year" value="{{ old('year') ?? $plane->year }}">
+                <input class="form-control name-form" placeholder="Año de creación" type="text" name="year" id="year" value="{{ old('year') ?? $plane->year }}" required>
                 @error('year')
                     <i>{{ $message }}</i>
                 @enderror
@@ -49,63 +49,63 @@
                 <br>
 
                 <label for="machine_guns">Ametralladoras</label>
-                <input class="form-control name-form" placeholder="Número de ametralladoras" type="number" name="machine_guns" id="machine_guns" value="{{ old('machine_guns') ?? $plane->machine_guns }}">
+                <input class="form-control name-form" placeholder="Número de ametralladoras" type="number" name="machine_guns" id="machine_guns" value="{{ old('machine_guns') ?? $plane->machine_guns }}" required>
                 @error('machine_guns')
                     <i>{{ $message }}</i>
                 @enderror
                 <br>
 
                 <label for="cannons">Cañones</label>
-                <input class="form-control name-form" placeholder="Número de cañones" type="number" name="cannons" id="cannons" value="{{ old('cannons') ?? $plane->cannons }}">
+                <input class="form-control name-form" placeholder="Número de cañones" type="number" name="cannons" id="cannons" value="{{ old('cannons') ?? $plane->cannons }}" required>
                 @error('cannons')
                     <i>{{ $message }}</i>
                 @enderror
                 <br>
 
                 <label for="turrets">Torretas</label>
-                <input class="form-control name-form" placeholder="Número de torretas" type="number" name="turrets" id="turrets" value="{{ old('turrets') ?? $plane->turrets }}">
+                <input class="form-control name-form" placeholder="Número de torretas" type="number" name="turrets" id="turrets" value="{{ old('turrets') ?? $plane->turrets }}" required>
                 @error('turrets')
                     <i>{{ $message }}</i>
                 @enderror
                 <br>
 
                 <label for="max_height_m">Operación maxima (metros)</label>
-                <input class="form-control name-form" placeholder="Altura de operación maxima (metros)" type="number" name="max_height_m" id="max_height_m" value="{{ old('max_height_m') ?? $plane->max_height_m }}">
+                <input class="form-control name-form" placeholder="Altura de operación maxima (metros)" type="number" name="max_height_m" id="max_height_m" value="{{ old('max_height_m') ?? $plane->max_height_m }}" required>
                 @error('max_height_m')
                     <i>{{ $message }}</i>
                 @enderror
                 <br>
 
                 <label for="crew">Tripulación</label>
-                <input class="form-control name-form" placeholder="Tripulación del avión" type="number" name="crew" id="crew" value="{{ old('crew') ?? $plane->crew }}">
+                <input class="form-control name-form" placeholder="Tripulación del avión" type="number" name="crew" id="crew" value="{{ old('crew') ?? $plane->crew }}" required>
                 @error('crew')
                     <i>{{ $message }}</i>
                 @enderror
                 <br>
 
                 <label for="max_speed_kmh">Velocidad maxima</label>
-                <input class="form-control name-form" placeholder="Velocidad máxima en km/h" type="number" name="max_speed_kmh" id="max_speed_kmh" value="{{ old('max_speed_kmh') ?? $plane->max_speed_kmh }}">
+                <input class="form-control name-form" placeholder="Velocidad máxima en km/h" type="number" name="max_speed_kmh" id="max_speed_kmh" value="{{ old('max_speed_kmh') ?? $plane->max_speed_kmh }}" required>
                 @error('max_speed_kmh')
                     <i>{{ $message }}</i>
                 @enderror
                 <br>
 
                 <label for="weight_kg">Peso</label>
-                <input class="form-control name-form" placeholder="Peso en kg" type="number" name="weight_kg" id="weight_kg" value="{{ old('weight_kg') ?? $plane->weight_kg }}">
+                <input class="form-control name-form" placeholder="Peso en kg" type="number" name="weight_kg" id="weight_kg" value="{{ old('weight_kg') ?? $plane->weight_kg }}" required>
                 @error('weight_kg')
                     <i>{{ $message }}</i>
                 @enderror
                 <br>
 
                 <label for="category">Categoria</label>
-                <input class="form-control name-form" placeholder="Categoría del avión" type="text" name="category" id="category" value="{{ old('category') ?? $plane->category }}">
+                <input class="form-control name-form" placeholder="Categoría del avión" type="text" name="category" id="category" value="{{ old('category') ?? $plane->category }}" required>
                 @error('category')
                     <i>{{ $message }}</i>
                 @enderror
                 <br>
 
                 <label for="description">Descripción</label>
-                <textarea rows="4" cols="50" class="message-form" name="description" id="description"> {{ old('description') ?? $plane->description}} </textarea>
+                <textarea rows="4" cols="50" class="message-form" name="description" id="description" required> {{ old('description') ?? $plane->description}} </textarea>
                 @error('description')
                     <i>{{ $message }}</i>
                 @enderror

@@ -26,8 +26,8 @@ class ConflictController extends Controller
      */
     public function index()
     {
-        $conflict = Conflict::all();
-        //
+        $conflicts = Conflict::all();
+        return view('conflict/conflictIndex', compact('conflicts'));
     }
 
     /**
@@ -37,8 +37,8 @@ class ConflictController extends Controller
      */
     public function create()
     {
-        $nation = Nation::all();
-        //
+        $nations = Nation::all();
+        return view('conflict/conflictCreate', compact('nations'));
     }
 
     /**
@@ -49,7 +49,18 @@ class ConflictController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:50',
+            'start_year' => 'required|integer|numeric',
+            'end_year' => 'integer|numeric',
+            'description' => 'required|max:500',
+        ]);
+
+        $conflict = Conflict::create($request->all());
+
+        $conflict->nations()->attach($request->nation_id);
+
+        return redirect('/conflict');
     }
 
     /**
@@ -60,7 +71,7 @@ class ConflictController extends Controller
      */
     public function show(Conflict $conflict)
     {
-        //
+        return view('/conflict/conflictShow', compact('conflict'));
     }
 
     /**
@@ -71,7 +82,8 @@ class ConflictController extends Controller
      */
     public function edit(Conflict $conflict)
     {
-        //
+        $nations = Nation::all();
+        return view('/conflict/conflictEdit', compact('conflict', 'nations'));
     }
 
     /**
@@ -83,7 +95,18 @@ class ConflictController extends Controller
      */
     public function update(Request $request, Conflict $conflict)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:50',
+            'start_year' => 'required|integer|numeric',
+            'end_year' => 'integer|numeric',
+            'description' => 'required|max:500',
+        ]);
+        
+        Conflict::where('id', $conflict->id)->update($request->except('_token', '_method', 'nation_id'));
+
+        $conflict->nations()->sync($request->nation_id);
+
+        return redirect('/conflict');
     }
 
     /**
@@ -94,6 +117,8 @@ class ConflictController extends Controller
      */
     public function destroy(Conflict $conflict)
     {
-        //
+        $conflict->nations()->detach();
+        $conflict->delete();
+        return redirect('/conflict');
     }
 }

@@ -99,7 +99,7 @@ class PlaneController extends Controller
     {
         //Consulta las naciones y las manda con compact a la vista
         $nations = Nation::all();
-        return view('plane/planeEdit', compact('plane', 'nations'));
+        return view('/plane/planeEdit', compact('plane', 'nations'));
     }
 
     /**
