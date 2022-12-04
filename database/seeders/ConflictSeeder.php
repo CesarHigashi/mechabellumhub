@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Conflict;
+use App\Models\Nation;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -33,5 +35,12 @@ class ConflictSeeder extends Seeder
             'end_year' => '1975',
             'description' => 'Pasados de lanza los arboles',
         ]);
+        
+        $nations = Nation::all();
+        Conflict::all()->each(function ($conflict) use ($nations){
+            $conflict->nations()->attach(
+                $nations->random(rand(1,5))->pluck('id')->toArray()
+            );
+        });
     }
 }
