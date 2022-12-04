@@ -22,22 +22,22 @@
                 @csrf
                 
                 <label for="name">Nombre del conflicto</label>
-                <input class="form-control name-form" placeholder="Nombre del conflicto" type="text" name="name" id="name" value="{{ old('name') }}" required>
+                <input class="form-control name-form" placeholder="Nombre del conflicto" type="text" name="name" id="name" value="{{ old('name') }}">
                 @error('name')
                     <i>{{ $message }}</i>
                 @enderror
                 <br>
 
                 <label for="start_year">Año de inicio</label>
-                <input class="form-control name-form" placeholder="Año de inicio" type="number" name="start_year" id="start_year" value="{{ old('start_year') }}" required>
+                <input class="form-control name-form" placeholder="Año de inicio" type="number" name="start_year" id="start_year" value="{{ old('start_year') }}">
                 @error('start_year')
                     <i>{{ $message }}</i>
                 @enderror
                 <br>
 
                 <label for="end_year">Año de finalizacion</label>
-                <input class="form-control name-form" placeholder="Año de finalizacion" type="number" name="end_year" id="end_year" value="{{ old('end_year') }}" required>
-                @error('start_year')
+                <input class="form-control name-form" placeholder="Año de finalizacion" type="number" name="end_year" id="end_year" value="{{ old('end_year') }}">
+                @error('end_year')
                     <i>{{ $message }}</i>
                 @enderror
                 <br>
@@ -50,6 +50,7 @@
                 </select>
                 <br>
                 <i>Para seleccionar mas de una opcion, mantenga presionada la tecla CTRL mientras da click a las opciones</i>
+                <br>
                 <i>Para deseleccionar una opcion de las seleccionadas, mantenga presionada la tecla CTRL mientras da click en la opcion que desea desmarcar</i>
                 <br>
                 @error('nations_id')
@@ -58,7 +59,7 @@
                 <br>
 
                 <label for="description">Descripción</label>
-                <textarea rows="4" cols="50" class="message-form" name="description" id="description" required> {{ old('description') }} </textarea>
+                <textarea rows="4" cols="50" class="message-form" name="description" id="description"> {{ old('description') }} </textarea>
                 @error('description')
                     <i>{{ $message }}</i>
                 @enderror

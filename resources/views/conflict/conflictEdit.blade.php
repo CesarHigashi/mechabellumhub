@@ -22,22 +22,22 @@
                 @csrf
                 @method('patch')
                 <label for="name">Nombre del conflicto</label>
-                <input class="form-control name-form" placeholder="Nombre del conflicto" type="text" name="name" id="name" value="{{ old('name')  ?? $conflict->name }}" required>
+                <input class="form-control name-form" placeholder="Nombre del conflicto" type="text" name="name" id="name" value="{{ old('name')  ?? $conflict->name }}">
                 @error('name')
                     <i>{{ $message }}</i>
                 @enderror
                 <br>
 
                 <label for="start_year">Año de inicio</label>
-                <input class="form-control name-form" placeholder="Año de inicio" type="number" name="start_year" id="start_year" value="{{ old('start_year') ?? $conflict->start_year }}" required>
+                <input class="form-control name-form" placeholder="Año de inicio" type="number" name="start_year" id="start_year" value="{{ old('start_year') ?? $conflict->start_year }}">
                 @error('start_year')
                     <i>{{ $message }}</i>
                 @enderror
                 <br>
 
                 <label for="end_year">Año de finalizacion</label>
-                <input class="form-control name-form" placeholder="Año de finalizacion" type="number" name="end_year" id="end_year" value="{{ old('end_year') ?? $conflict->end_year }}" required>
-                @error('start_year')
+                <input class="form-control name-form" placeholder="Año de finalizacion" type="number" name="end_year" id="end_year" value="{{ old('end_year') ?? $conflict->end_year }}">
+                @error('end_year')
                     <i>{{ $message }}</i>
                 @enderror
                 <br>
@@ -59,7 +59,7 @@
                 <br>
 
                 <label for="description">Descripción</label>
-                <textarea rows="4" cols="50" class="message-form" name="description" id="description" required> {{ old('description') ?? $conflict->description }} </textarea>
+                <textarea rows="4" cols="50" class="message-form" name="description" id="description"> {{ old('description') ?? $conflict->description }} </textarea>
                 @error('description')
                     <i>{{ $message }}</i>
                 @enderror

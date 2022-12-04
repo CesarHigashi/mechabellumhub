@@ -24,14 +24,14 @@
                 @csrf
                 
                 <label for="name">Nombre</label>
-                <input class="form-control name-form" placeholder="Nombre del avión" type="text" name="name" id="name" value="{{ old('name') }}" required>
+                <input class="form-control name-form" placeholder="Nombre del avión" type="text" name="name" id="name" value="{{ old('name') }}">
                 @error('name')
                     <i>{{ $message }}</i>
                 @enderror
                 <br>
 
                 <label for="year">Año</label>
-                <input class="form-control name-form" placeholder="Año de creación" type="text" name="year" id="year" value="{{ old('year') }}" required>
+                <input class="form-control name-form" placeholder="Año de creación" type="number" name="year" id="year" value="{{ old('year') }}">
                 @error('year')
                     <i>{{ $message }}</i>
                 @enderror
@@ -49,63 +49,63 @@
                 <br>
 
                 <label for="machine_guns">Ametralladoras</label>
-                <input class="form-control name-form" placeholder="Número de ametralladoras" type="number" name="machine_guns" id="machine_guns" value="{{ old('machine_guns') }}" required>
+                <input class="form-control name-form" placeholder="Número de ametralladoras" type="number" name="machine_guns" id="machine_guns" value="{{ old('machine_guns') }}">
                 @error('machine_guns')
                     <i>{{ $message }}</i>
                 @enderror
                 <br>
 
                 <label for="cannons">Cañones</label>
-                <input class="form-control name-form" placeholder="Número de cañones" type="number" name="cannons" id="cannons" value="{{ old('cannons') }}" required>
+                <input class="form-control name-form" placeholder="Número de cañones" type="number" name="cannons" id="cannons" value="{{ old('cannons') }}">
                 @error('cannons')
                     <i>{{ $message }}</i>
                 @enderror
                 <br>
 
                 <label for="turrets">Torretas</label>
-                <input class="form-control name-form" placeholder="Número de torretas" type="number" name="turrets" id="turrets" value="{{ old('turrets') }}"required>
+                <input class="form-control name-form" placeholder="Número de torretas" type="number" name="turrets" id="turrets" value="{{ old('turrets') }}">
                 @error('turrets')
                     <i>{{ $message }}</i>
                 @enderror
                 <br>
 
                 <label for="max_height_m">Operación maxima (metros)</label>
-                <input class="form-control name-form" placeholder="Altura de operación maxima (metros)" type="number" name="max_height_m" id="max_height_m" value="{{ old('max_height_m') }}" required>
+                <input class="form-control name-form" placeholder="Altura de operación maxima (metros)" type="number" name="max_height_m" id="max_height_m" value="{{ old('max_height_m') }}">
                 @error('max_height_m')
                     <i>{{ $message }}</i>
                 @enderror
                 <br>
 
                 <label for="crew">Tripulación</label>
-                <input class="form-control name-form" placeholder="Tripulación del avión" type="number" name="crew" id="crew" value="{{ old('crew') }}" required>
+                <input class="form-control name-form" placeholder="Tripulación del avión" type="number" name="crew" id="crew" value="{{ old('crew') }}">
                 @error('crew')
                     <i>{{ $message }}</i>
                 @enderror
                 <br>
 
                 <label for="max_speed_kmh">Velocidad maxima</label>
-                <input class="form-control name-form" placeholder="Velocidad máxima en km/h" type="number" name="max_speed_kmh" id="max_speed_kmh" value="{{ old('max_speed_kmh') }}" required>
+                <input class="form-control name-form" placeholder="Velocidad máxima en km/h" type="number" name="max_speed_kmh" id="max_speed_kmh" value="{{ old('max_speed_kmh') }}">
                 @error('max_speed_kmh')
                     <i>{{ $message }}</i>
                 @enderror
                 <br>
 
                 <label for="weight_kg">Peso</label>
-                <input class="form-control name-form" placeholder="Peso en kg" type="number" name="weight_kg" id="weight_kg" value="{{ old('weight_kg') }}" required>
+                <input class="form-control name-form" placeholder="Peso en kg" type="number" name="weight_kg" id="weight_kg" value="{{ old('weight_kg') }}">
                 @error('weight_kg')
                     <i>{{ $message }}</i>
                 @enderror
                 <br>
 
                 <label for="category">Categoria</label>
-                <input class="form-control name-form" placeholder="Categoría del avión" type="text" name="category" id="category" value="{{ old('category') }}" required>
+                <input class="form-control name-form" placeholder="Categoría del avión" type="text" name="category" id="category" value="{{ old('category') }}">
                 @error('category')
                     <i>{{ $message }}</i>
                 @enderror
                 <br>
 
                 <label for="description">Descripción</label>
-                <textarea rows="4" cols="50" class="message-form" name="description" id="description" required> {{ old('description') }} </textarea>
+                <textarea rows="4" cols="50" class="message-form" name="description" id="description"> {{ old('description') }} </textarea>
                 @error('description')
                     <i>{{ $message }}</i>
                 @enderror

@@ -53,7 +53,7 @@ class PlaneController extends Controller
         //Validar
         $request->validate([
             'name' => 'required|max:50',
-            'year' => 'required|integer|numeric',
+            'year' => 'digits:4|required|integer|numeric',
             //'country' => 'required',
             'nations_id' => 'required|max:25',
             'machine_guns' => 'digits_between:0,2|integer|numeric',
@@ -113,7 +113,7 @@ class PlaneController extends Controller
     {
         $request->validate([
             'name' => 'required|max:50',
-            'year' => 'required|integer|numeric',
+            'year' => 'digits:4|required|integer|numeric',
             //'country' => 'required',
             'nations_id' => 'required|max:25',
             'machine_guns' => 'digits_between:0,2|integer|numeric',

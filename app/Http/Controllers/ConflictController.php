@@ -51,8 +51,8 @@ class ConflictController extends Controller
     {
         $request->validate([
             'name' => 'required|max:50',
-            'start_year' => 'required|integer|numeric',
-            'end_year' => 'integer|numeric',
+            'start_year' => 'required|digits:4|integer|numeric',
+            'end_year' => 'digits:4|integer|numeric|nullable',
             'description' => 'required|max:500',
         ]);
 
@@ -97,8 +97,8 @@ class ConflictController extends Controller
     {
         $request->validate([
             'name' => 'required|max:50',
-            'start_year' => 'required|integer|numeric',
-            'end_year' => 'integer|numeric',
+            'start_year' => 'required|digits:4|integer|numeric',
+            'end_year' => 'digits:4|integer|numeric|nullable',
             'description' => 'required|max:500',
         ]);
         

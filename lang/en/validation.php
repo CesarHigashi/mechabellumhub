@@ -157,21 +157,19 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
-        //Atributo compartido por avion y tanque
+        //Atributo compartido por avion, tanque y conflicto
         'name'=> [
             'required' => 'El :attribute es un campo requerido',
             'max' => 'El :attribute es demasiado largo'
         ],
-        //Atributo compartido por avion y tanque
+        //Atributo compartido por avion, tanque y conflicto
         'year' => [
+            'digits' => 'No es un :attribute valido, verifique de nuevo',
             'required' => 'El :attribute es un campo requerido',
             'integer' => 'El :attribute debe ser número entero',
             'numeric' => 'El :attribute debe ser escrito en número'
         ],
         //Atributo compartido por avion y tanque
-        /* 'country' => [
-            'required' => 'El :attribute es un campo requerido'
-        ], */
         'nation_id' => [
             'required' => 'El :attribute es un campo requerido',
             'max' => 'El :attribute tiene una longitud muy larga'
@@ -226,7 +224,7 @@ return [
             'required' => 'La :attribute es un campo requerido',
             'max' => 'La longitud de :attribute es demasiado larga'
         ],
-        //Atributo compartido por avion y tanque
+        //Atributo compartido por avion, tanque y conflicto
         'description' => [
             'required' => 'La :attribute es un campo requerido',
             'max' => 'La :attrubute es demasiado larga, considere resumirla'
@@ -235,6 +233,18 @@ return [
         'caliber_mm' => [
             'digits_between' => 'El :attribute es demasiado grande',
             'integer' => 'El :attribute debe ser número entero',
+            'numeric' => 'El :attribute debe ser escrito en número'
+        ],
+        //Atributo de conflicto
+        'start_year' => [
+            'required' => 'El :attribute es un campo requerido',
+            'digits' => 'El :attribute no es valido, verifique de nuevo',
+            'integer' => 'El :attribute debe ser un número entero',
+            'numeric' => 'El :attribute debe ser escrito en número'
+        ],
+        'end_year' => [
+            'digits' => 'El :attribute no es valido, verifique de nuevo',
+            'integer' => 'El :attribute debe ser un número entero',
             'numeric' => 'El :attribute debe ser escrito en número'
         ],
     ],
@@ -270,6 +280,9 @@ return [
         'description' => 'descripción',
         //Atributo de tanque
         'caliber_mm' => 'calibre',
+        //Atributos de conflicto
+        'start_year' => 'año de inicio',
+        'end_year' => 'año de finalización',
     ],
 
 ];
