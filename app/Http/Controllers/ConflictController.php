@@ -19,6 +19,14 @@ use Illuminate\Http\Request;
 
 class ConflictController extends Controller
 {
+    
+    //Middleware autenticación
+    public function __construct()
+    {
+        //Permite visualizar index y show
+        $this->middleware('auth')->except('index', 'show');
+    }
+
     /**
      * Display a listing of the resource.
      *

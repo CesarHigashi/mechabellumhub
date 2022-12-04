@@ -2,8 +2,8 @@
 <div class="allcontain">
 	<div class="header">
 		<ul class="logreg">
-			<li><a href="#">Login </a> </li>
-			<li><a href="#"><span class="register">Registrarse</span></a></li>
+			<li><a href="http://mechabellumhub.test/login">Login </a> </li>
+			<li><a href="http://mechabellumhub.test/register"><span class="register">Registrarse</span></a></li>
 		</ul>
 	</div>
 	<!-- Navbar Up -->
