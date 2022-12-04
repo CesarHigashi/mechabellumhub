@@ -5,11 +5,22 @@
     @if(\Auth::user() != null)
         <div class="collapse navbar-collapse" id="upmenu">
             <ul class="nav navbar-nav" id="navbarontop">
-                    <button onclick="location.href='/tank/create'" type="button"><span class="postnewcar">NUEVO AVIÓN</span></button>
+                    <button onclick="location.href='/plane/create'" type="button"><span class="postnewcar">NUEVO AVIÓN</span></button>
             </ul>
 	    </div>
     @else
         <br><br>
+    @endif
+
+    <!-- Esta seccion son botones para ver listados de todos los registros o solo los eliminados -->
+    @if(request()->has('view_deleted'))
+        <!-- En estas dos, el primero es para regresar al listado completo cuando estamos viendo los registros eliminados -->
+        <a href="{{ route('plane.index') }}">Ver todos los aviones</a>
+        <!-- El segundo es para restaurar todo lo eliminado de ese modelo -->
+        <a href="{{ route('plane.restore.all') }}">Restaurar todo</a>
+    @else
+        <!-- Este es para ver los registros eliminados -->
+        <a href="{{ route('plane.index', ['view_deleted' => 'DeletedRecords'])}}">Ver registros eliminados</a>
     @endif
 
     <a href="/plane/create">Ir a formulario</a>
@@ -20,7 +31,12 @@
             <th>Categoria</th>
             <th>País</th>
             <th>Editar</th>
-            <th>Eliminar</th>
+            <!-- Condicional para ver que header se muestra -->
+            @if(request()->has('view_deleted'))
+                <th>Restaurar</th>
+            @else
+                <th>Eliminar</th>
+            @endif
         </tr>
         @foreach ($planes as $plane)
             <tr>
@@ -33,11 +49,18 @@
                     <a href="/plane/{{ $plane->id }}/edit">Editar</a>
                 </td>
                 <td>
-                    <form action="/plane/{{ $plane->id }}" method="POST">
-                        @csrf
-                        @method('delete')
-                        <input type="submit" value="Borrar">
-                    </form>
+                    <!-- Condicional para ver que boton de accion se muestra -->
+                    @if(request()->has('view_deleted'))
+                        <!-- muestra restaurar, restaura un solo registro -->
+                        <a href="{{ route('plane.restore', $plane->id) }}">Restaurar</a>
+                    @else
+                        <!-- muestra el boton de eliminar -->
+                        <form action="/plane/{{ $plane->id }}" method="POST">
+                            @csrf
+                            @method('delete')
+                            <input type="submit" value="Borrar">
+                        </form>
+                    @endif
                 </td>
             </tr>
         @endforeach

@@ -12,6 +12,17 @@
         <br><br>
     @endif
     
+    <!-- Esta seccion son botones para ver listados de todos los registros o solo los eliminados -->
+    @if(request()->has('view_deleted'))
+        <!-- En estas dos, el primero es para regresar al listado completo cuando estamos viendo los registros eliminados -->
+        <a href="{{ route('tank.index') }}">Ver todos los tanques</a>
+        <!-- El segundo es para restaurar todo lo eliminado de ese modelo -->
+        <a href="{{ route('tank.restore.all') }}">Restaurar todo</a>
+    @else
+        <!-- Este es para ver los registros eliminados -->
+        <a href="{{ route('tank.index', ['view_deleted' => 'DeletedRecords'])}}">Ver registros eliminados</a>
+    @endif
+
     <a href="/tank/create">Ir a formulario</a>
 
     <table border="1">
@@ -19,7 +30,12 @@
             <th>Nombre</th>
             <th>País</th>
             <th>Editar</th>
-            <th>Eliminar</th>
+            <!-- Condicional para ver que header se muestra -->
+            @if(request()->has('view_deleted'))
+                <th>Restaurar</th>
+            @else
+                <th>Eliminar</th>
+            @endif
         </tr>
         @foreach ($tanks as $tank)
             <tr>
@@ -31,11 +47,18 @@
                     <a href="/tank/{{ $tank->id }}/edit">Editar</a>
                 </td>
                 <td>
-                    <form action="/tank/{{ $tank->id }}" method="POST">
-                        @csrf
-                        @method('delete')
-                        <input type="submit" value="Borrar">
-                    </form>
+                    <!-- Condicional para ver que boton de accion se muestra -->
+                    @if(request()->has('view_deleted'))
+                        <!-- muestra restaurar, restaura un solo registro -->
+                        <a href="{{ route('tank.restore', $tank->id) }}">Restaurar</a>
+                    @else
+                        <!-- muestra el boton de eliminar -->
+                        <form action="/tank/{{ $tank->id }}" method="POST">
+                            @csrf
+                            @method('delete')
+                            <input type="submit" value="Borrar">
+                        </form>
+                    @endif
                 </td>
             </tr>
         @endforeach

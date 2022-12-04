@@ -32,11 +32,30 @@ class PlaneController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //$planes = Plane::all();
         $planes = Plane::with('nations:id,name')->get();
+
+        /* Recupera informacion de los deletes */
+        if($request->has('view_deleted')){
+            $planes = Plane::with('nations:id,name')->onlyTrashed()->get();
+        }
+
         return view('plane/planeIndex', compact('planes'));
+    }
+
+    /* Metodos de restore */
+    public function restore($id)
+    {
+        Plane::withTrashed()->find($id)->restore();
+        return redirect('/plane');
+    }
+
+    public function restoreAll()
+    {
+        Plane::onlyTrashed()->restore();
+        return redirect('/plane');
     }
 
     /**

@@ -34,12 +34,32 @@ class ConflictController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //$conflicts = Conflict::all();
         $conflicts = Conflict::with('nations')->get();
+
+        /* Recupera informacion de los deletes */
+        if($request->has('view_deleted')){
+            $conflicts = Conflict::with('nations')->onlyTrashed()->get();
+        }
+
         return view('conflict/conflictIndex', compact('conflicts'));
     }
+
+    /* Metodos para restore */
+    public function restore($id)
+    {
+        Conflict::withTrashed()->find($id)->restore();
+        return redirect('/conflict');
+    }
+
+    public function restoreAll()
+    {
+        Conflict::onlyTrashed()->restore();
+        return redirect('/conflict');
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -143,7 +163,8 @@ class ConflictController extends Controller
             abort(403);
         }
 
-        $conflict->nations()->detach();
+        /* Sin detach, para que los softdeletes funcionen bien */
+        //$conflict->nations()->detach();
         $conflict->delete();
         return redirect('/conflict');
     }

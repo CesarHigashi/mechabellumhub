@@ -32,11 +32,30 @@ class TankController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //$tanks = Tank::all();
         $tanks = Tank::with('nations:id,name')->get();
+        
+        /* Recupera informacion de los deletes */
+        if($request->has('view_deleted')){
+            $tanks = Tank::with('nations:id,name')->onlyTrashed()->get();
+        }
+
         return view('tank/tankIndex', compact('tanks'));
+    }
+
+    /* Metodos para restore */
+    public function restore($id)
+    {
+        Tank::withTrashed()->find($id)->restore();
+        return redirect('/tank');
+    }
+
+    public function restoreAll()
+    {
+        Tank::onlyTrashed()->restore();
+        return redirect('/tank');
     }
 
     /**
