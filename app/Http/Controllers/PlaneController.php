@@ -34,7 +34,8 @@ class PlaneController extends Controller
      */
     public function index()
     {
-        $planes = Plane::all();  
+        //$planes = Plane::all();
+        $planes = Plane::with('nations:id,name')->get();
         return view('plane/planeIndex', compact('planes'));
     }
 
@@ -93,7 +94,6 @@ class PlaneController extends Controller
      */
     public function show(Plane $plane)
     {
-        
         return view('/plane/planeShow', compact('plane'));
     }
 

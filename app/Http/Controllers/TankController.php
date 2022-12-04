@@ -34,7 +34,8 @@ class TankController extends Controller
      */
     public function index()
     {
-        $tanks = Tank::all();  
+        //$tanks = Tank::all();
+        $tanks = Tank::with('nations:id,name')->get();
         return view('tank/tankIndex', compact('tanks'));
     }
 

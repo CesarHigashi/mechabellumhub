@@ -36,7 +36,8 @@ class ConflictController extends Controller
      */
     public function index()
     {
-        $conflicts = Conflict::all();
+        //$conflicts = Conflict::all();
+        $conflicts = Conflict::with('nations')->get();
         return view('conflict/conflictIndex', compact('conflicts'));
     }
 
