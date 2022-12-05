@@ -3,8 +3,8 @@
 
     <!-- Botón para agregar vehiculos, se le muestra sólo a usuarios registrados -->
     @if(\Auth::user() != null)
-        <div class="collapse navbar-collapse" id="upmenu">
-            <ul class="nav navbar-nav" id="navbarontop">
+        <div class="text-center">
+            <ul class="center" id="navbarontop">
                     <button onclick="location.href='/tank/create'" type="button"><span class="postnewcar">NUEVO TANQUE</span></button>
             </ul>
 	    </div>

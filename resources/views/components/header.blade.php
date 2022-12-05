@@ -22,17 +22,7 @@
 	</div>
 	<!-- Navbar Up -->
 	<nav class="topnavbar navbar-default topnav">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed toggle-costume" data-toggle="collapse" data-target="#upmenu" aria-expanded="false">
-					<span class="sr-only"> Toggle navigaion</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-			</div>	 
-		</div>
-		<div class="collapse navbar-collapse" id="upmenu">
+		<div class="text-center">
 			<ul class="nav navbar-nav" id="navbarontop">
 				<li class="active"><a href="/plane">AVIONES</a> </li>
 				<li class="active"><a href="/tank">TANQUES</a> </li>

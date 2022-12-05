@@ -13,7 +13,9 @@
 
 .center{
 	margin: auto;
+	border: 3px solid green;
 }
+
 .socialicon{
 list-style-type: none;
 display: inline-block;
