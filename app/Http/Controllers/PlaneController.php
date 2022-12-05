@@ -228,9 +228,9 @@ class PlaneController extends Controller
         }
 
         //Hace soft delete a la imagen
-        $file= Image::whereId($plane->image->id)->firstOrFail();
+        //$file= Image::whereId($plane->image->id)->firstOrFail();
         //unlink(public_path(Storage::url($file->location)));
-        $file->delete($file->id);
+        //$file->delete($file->id);
 
         $plane -> delete();
         return redirect('/plane')->with('delete','Avión eliminado de forma exitosa.');

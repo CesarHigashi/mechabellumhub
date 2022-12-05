@@ -216,8 +216,8 @@ class TankController extends Controller
         }
 
         //Hacer soft delete a la imagen
-        $file= Image::whereId($tank->image->id)->firstOrFail();
-        $file->delete($file->id);
+        //$file= Image::whereId($tank->image->id)->firstOrFail();
+        //$file->delete($file->id);
 
         $tank -> delete();
         return redirect('/tank')->with('delete','Tanque eliminado de forma exitosa.');
