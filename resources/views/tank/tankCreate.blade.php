@@ -87,7 +87,7 @@
                 <br>
 
                 <label for="image">Subir imagen</label>
-                <input type="file" name="image" id="image" accept=".png, .jpg, .jpeg">
+                <input type="file" name="image" id="image" accept=".png, .jpg, .jpeg" required>
 
                 <label for="description" class = "description-form">Descripción</label>
                 <textarea rows="4" cols="50" class="message-form" name="description" id="description"> {{ old('description') }} </textarea>

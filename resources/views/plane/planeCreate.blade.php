@@ -107,7 +107,7 @@
                 <!-- subida de archivos -->
 
                 <label for="image">Subir imagen</label>
-                <input type="file" name="image" id="image" accept=".png, .jpg, .jpeg">
+                <input type="file" name="image" id="image" accept=".png, .jpg, .jpeg" required>
 
                 <label for="description">Descripción</label>
                 <textarea rows="4" cols="50" class="message-form" name="description" id="description"> {{ old('description') }} </textarea>
