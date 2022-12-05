@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\NotifyPlane;
 use App\Models\Image;
 use App\Models\Nation;
 use App\Models\Plane;
@@ -9,6 +10,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Mail;
+use App\Models\User;
 
 class PlaneController extends Controller
 {    
@@ -115,7 +118,11 @@ class PlaneController extends Controller
 
         //Insertar en BD
         //Usa el modelo para mandar informacion a la base de datos
-        $plane=Plane::create($request->all());
+        $plane = Plane::create($request->all());
+        $usuario = User::where('rol', 'admin')->first();
+        
+        //Correo para avisar de nuevo tanque
+        Mail::to($usuario->email)->send(new NotifyPlane($plane));
 
         //Subida de archivo
         if ($request->file('image')->isValid()){
