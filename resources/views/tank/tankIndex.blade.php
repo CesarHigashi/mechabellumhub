@@ -30,7 +30,7 @@
                 <!-- En estas dos, el primero es para regresar al listado completo cuando estamos viendo los registros eliminados -->
                 <a href="{{ route('tank.index') }}">Ver todos los tanques</a>
                 <!-- El segundo es para restaurar todo lo eliminado de ese modelo -->
-                <a href="{{ route('tank.restore.all') }}">Restaurar todo</a>
+                <!-- <a href="{{ route('tank.restore.all') }}">Restaurar todo</a> -->
             @else
                 <!-- Este es para ver los registros eliminados -->
                 <a href="{{ route('tank.index', ['view_deleted' => 'DeletedRecords'])}}">Ver registros eliminados</a>

@@ -30,7 +30,7 @@
                 <!-- En estas dos, el primero es para regresar al listado completo cuando estamos viendo los registros eliminados -->
                 <a href="{{ route('plane.index') }}">Ver todos los aviones</a>
                 <!-- El segundo es para restaurar todo lo eliminado de ese modelo -->
-                <a href="{{ route('plane.restore.all') }}">Restaurar todo</a>
+                <!-- <a href="{{ route('plane.restore.all') }}">Restaurar todo</a> -->
             @else
                 <!-- Este es para ver los registros eliminados -->
                 <a href="{{ route('plane.index', ['view_deleted' => 'DeletedRecords'])}}">Ver registros eliminados</a>
