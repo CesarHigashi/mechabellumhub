@@ -112,14 +112,13 @@
                 @foreach ($tanks as $tank)
                     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                         <div class="txthover">
-                            <img src="{{ \Storage::url($tank->image->location)}}" alt="Tanque">
+                            <img width="400" height="400" src="{{ \Storage::url($tank->image->location)}}" alt="Tanque">
                             <div class="txtcontent">
                                 <div class="stars"></div>
                                 <div class="simpletxt">
                                     <h3 class="name">{{ $tank->name }} </h3>
                                     <p> {{ $tank->nations->name }} </p>
                                     <h4 class="price"> {{ $tank->category }} </h4>
-                                    <a class="" href="/tank/{{ $tank->id }}">LEER MÁS</a><br>    
                                 </div>
                             </div>
                         </div>	 
@@ -128,6 +127,4 @@
             </div>	 
         </div>
     @endif
-
-    
 </x-plantilla>

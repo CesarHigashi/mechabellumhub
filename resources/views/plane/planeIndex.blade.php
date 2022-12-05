@@ -111,14 +111,13 @@
                 @foreach ($planes as $plane)
                     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                         <div class="txthover">
-                            <img src="{{ \Storage::url($plane->image->location)}}" alt="Avión">
+                            <img width="400" height="400" src="{{ \Storage::url($plane->image->location)}}" alt="Avión">
                             <div class="txtcontent">
                                 <div class="stars"></div>
                                 <div class="simpletxt">
                                     <h3 class="name">{{ $plane->name }} </h3>
-                                    <p> {{ $plane->country }} </p>
-                                    <h4 class="price"> {{ $plane->category }} </h4>
-                                    <a class="" href="/plane/{{ $plane->id }}">LEER MÁS</a><br>    
+                                    <p> {{ $plane->nations->name }} </p>
+                                    <h4 class="price"> {{ $plane->category }} </h4>    
                                 </div>
                             </div>
                         </div>	 
