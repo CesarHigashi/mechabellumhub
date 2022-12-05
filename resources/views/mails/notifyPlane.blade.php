@@ -1,9 +1,9 @@
 @component('mail::message')
 <h1>Avión Nuevo Registrado</h1>
 
-El avión '{{ $avion->name }}' ha sido registrado en la galería.
+El avión '{{ $plane->name }}' ha sido registrado en la galería.
 
-@component('mail::button', ['url' => route('avion.show', $avion)])
+@component('mail::button', ['url' => route('plane.show', $plane)])
 Ver avión
 @endcomponent
 
