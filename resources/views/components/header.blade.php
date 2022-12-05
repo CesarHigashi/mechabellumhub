@@ -34,25 +34,8 @@
 		</div>
 		<div class="collapse navbar-collapse" id="upmenu">
 			<ul class="nav navbar-nav" id="navbarontop">
-				<li class="active"><a href="#">HOME</a> </li>
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle"	data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> VEHÍCULOS </a>
-					<ul class="dropdown-menu dropdowncostume">
-						<li><a href="/plane">Aviones</a></li>
-						<li><a href="/tank">Tanques</a></li>
-					</ul>
-				</li>
-
-				<!-- DROPDOWN PROVISIONAL -->
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> PAÍSES </a>
-					<ul class="dropdown-menu dropdowncostume">
-						<li><a href="#">1</a></li>
-						<li><a href="#">2</a></li>
-						<li><a href="3">3</a></li>
-					</ul>
-				</li>
-
+				<li class="active"><a href="/plane">AVIONES</a> </li>
+				<li class="active"><a href="/tank">TANQUES</a> </li>
 			</ul>
 		</div>
 	</nav>

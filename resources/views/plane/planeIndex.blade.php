@@ -48,46 +48,50 @@
     
     <!-- <a href="/plane/create">Ir a formulario</a> -->
 
-    <table border="1">
-        <tr>
-            <th>Nombre</th>
-            <th>Categoria</th>
-            <th>País</th>
-            <th>Editar</th>
-            <!-- Condicional para ver que header se muestra -->
-            @if(request()->has('view_deleted'))
-                <th>Restaurar</th>
-            @else
-                <th>Eliminar</th>
-            @endif
-        </tr>
-        @foreach ($planes as $plane)
-            <tr>
-                <td>
-                    <a href="/plane/{{ $plane->id }}">{{ $plane->name }}</a>
-                </td>
-                <td>{{ $plane->category }}</td>
-                <td>{{ $plane->nations->name }}</td>
-                <td>
-                    <a href="/plane/{{ $plane->id }}/edit">Editar</a>
-                </td>
-                <td>
-                    <!-- Condicional para ver que boton de accion se muestra -->
-                    @if(request()->has('view_deleted'))
-                        <!-- muestra restaurar, restaura un solo registro -->
-                        <a href="{{ route('plane.restore', $plane->id) }}">Restaurar</a>
-                    @else
-                        <!-- muestra el boton de eliminar -->
-                        <form action="/plane/{{ $plane->id }}" method="POST">
-                            @csrf
-                            @method('delete')
-                            <input type="submit" value="Borrar">
-                        </form>
-                    @endif
-                </td>
-            </tr>
-        @endforeach
-    </table>
+    @if(\Auth::user() != null)
+        @if (\Auth::user()->rol == "admin")
+            <div class="table-responsive">
+                <table class="table">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>País</th>
+                        <th>Editar</th>
+                        <!-- Condicional para ver que header se muestra -->
+                        @if(request()->has('view_deleted'))
+                            <th>Restaurar</th>
+                        @else
+                            <th>Eliminar</th>
+                        @endif
+                    </tr>
+                    @foreach ($planes as $plane)
+                        <tr>
+                            <td>
+                                <a href="/plane/{{ $plane->id }}">{{ $plane->name }}</a>
+                            </td>
+                            <td>{{ $plane->nations->name }}</td>
+                            <td>
+                                <a href="/plane/{{ $plane->id }}/edit">Editar</a>
+                            </td>
+                            <td>
+                                <!-- Condicional para ver que boton de accion se muestra -->
+                                @if(request()->has('view_deleted'))
+                                    <!-- muestra restaurar, restaura un solo registro -->
+                                    <a href="{{ route('plane.restore', $plane->id) }}">Restaurar</a>
+                                @else
+                                    <!-- muestra el boton de eliminar -->
+                                    <form action="/plane/{{ $plane->id }}" method="POST">
+                                        @csrf
+                                        @method('delete')
+                                        <input type="submit" value="Borrar">
+                                    </form>
+                                @endif
+                            </td>
+                        </tr>
+                    @endforeach
+                </table>
+            </div>
+        @endif
+    @endif
 
     <ul>
         

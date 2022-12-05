@@ -49,44 +49,50 @@
 
     <!-- <a href="/tank/create">Ir a formulario</a> -->
 
-    <table border="1">
-        <tr>
-            <th>Nombre</th>
-            <th>País</th>
-            <th>Editar</th>
-            <!-- Condicional para ver que header se muestra -->
-            @if(request()->has('view_deleted'))
-                <th>Restaurar</th>
-            @else
-                <th>Eliminar</th>
-            @endif
-        </tr>
-        @foreach ($tanks as $tank)
-            <tr>
-                <td>
-                    <a href="/tank/{{ $tank->id }}">{{ $tank->name }}</a>
-                </td>
-                <td>{{ $tank->nations->name }}</td>
-                <td>
-                    <a href="/tank/{{ $tank->id }}/edit">Editar</a>
-                </td>
-                <td>
-                    <!-- Condicional para ver que boton de accion se muestra -->
-                    @if(request()->has('view_deleted'))
-                        <!-- muestra restaurar, restaura un solo registro -->
-                        <a href="{{ route('tank.restore', $tank->id) }}">Restaurar</a>
-                    @else
-                        <!-- muestra el boton de eliminar -->
-                        <form action="/tank/{{ $tank->id }}" method="POST">
-                            @csrf
-                            @method('delete')
-                            <input type="submit" value="Borrar">
-                        </form>
-                    @endif
-                </td>
-            </tr>
-        @endforeach
-    </table>
+    @if(\Auth::user() != null)
+        @if (\Auth::user()->rol == "admin")
+            <div class="table-responsive">
+                <table class="table">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>País</th>
+                        <th>Editar</th>
+                        <!-- Condicional para ver que header se muestra -->
+                        @if(request()->has('view_deleted'))
+                            <th>Restaurar</th>
+                        @else
+                            <th>Eliminar</th>
+                        @endif
+                    </tr>
+                    @foreach ($tanks as $tank)
+                        <tr>
+                            <td>
+                                <a href="/tank/{{ $tank->id }}">{{ $tank->name }}</a>
+                            </td>
+                            <td>{{ $tank->nations->name }}</td>
+                            <td>
+                                <a href="/tank/{{ $tank->id }}/edit">Editar</a>
+                            </td>
+                            <td>
+                                <!-- Condicional para ver que boton de accion se muestra -->
+                                @if(request()->has('view_deleted'))
+                                    <!-- muestra restaurar, restaura un solo registro -->
+                                    <a href="{{ route('tank.restore', $tank->id) }}">Restaurar</a>
+                                @else
+                                    <!-- muestra el boton de eliminar -->
+                                    <form action="/tank/{{ $tank->id }}" method="POST">
+                                        @csrf
+                                        @method('delete')
+                                        <input type="submit" value="Borrar">
+                                    </form>
+                                @endif
+                            </td>
+                        </tr>
+                    @endforeach
+                </table>
+            </div>
+        @endif
+    @endif
 
     <ul>
 
